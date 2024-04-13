@@ -73,10 +73,6 @@ end
 
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/matas3535/gamesneeze/main/Library.lua"))()
 
-if not isfile("Atlanta/Library.lua") then
-writefile("Atlanta/Library.lua", loadstring(game:HttpGet("https://raw.githubusercontent.com/matas3535/gamesneeze/main/Library.lua"))())
-end
-
 -- // Tables
 local Library, Utility, Flags, Theme = loadfile("Atlanta/Library.lua")()
 --
