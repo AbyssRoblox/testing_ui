@@ -345,9 +345,9 @@ local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = corouti
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
 local CreateRenderObject = Drawing.new
-local DestroyRenderObject = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 3)
-local SetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__newindex, 4)
-local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 4)
+local DestroyRenderObject = GetUpvalue(GetUpvalue(Drawing.new, 5).__index, 3)
+local SetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 5).__newindex, 4)
+local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 5).__index, 4)
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
 --
