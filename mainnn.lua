@@ -345,9 +345,6 @@ local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = corouti
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
 local CreateRenderObject = Drawing.new
-local DestroyRenderObject = GetUpvalue(GetUpvalue(Drawing.new, 5).__index, 3)
-local SetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 5).__newindex, 4)
-local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 5).__index, 4)
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
 --
@@ -379,22 +376,22 @@ do -- Preload
             local Circle = Index == 1 and "AimAssist" or "Deadzone"
             --
             Visuals[Circle .. "Circle"] = CreateRenderObject("Circle")
-            SetRenderProperty(Visuals[Circle .. "Circle"], "Filled", true)
-            SetRenderProperty(Visuals[Circle .. "Circle"], "ZIndex", 59)
+            Visuals[Circle .. "Circle"].Filled = true
+            Visuals[Circle .. "Circle"].ZIndex = 59
             --
             Visuals[Circle .. "Outline"] = CreateRenderObject("Circle")
-            SetRenderProperty(Visuals[Circle .. "Outline"], "Thickness", 1.5)
-            SetRenderProperty(Visuals[Circle .. "Outline"], "Filled", false)
-            SetRenderProperty(Visuals[Circle .. "Outline"], "ZIndex", 60)
+            Visuals[Circle .. "Outline"].Thickness = 1.5
+            Visuals[Circle .. "Outline"].Filled = false
+            Visuals[Circle .. "Outline"].ZIndex = 60
         end
         --
         Visuals.Watermark = CreateRenderObject("Text")
-        SetRenderProperty(Visuals.Watermark, "Text", "Splix/Gamesneeze.cc/Atlanta.Space Beta 1.01")
-        SetRenderProperty(Visuals.Watermark, "Size", 13)
-        SetRenderProperty(Visuals.Watermark, "Font", 2)
-        SetRenderProperty(Visuals.Watermark, "Outline", true)
-        SetRenderProperty(Visuals.Watermark, "Color", Color3.fromRGB(255, 0, 0))
-        SetRenderProperty(Visuals.Watermark, "Visible", false)
+        Visuals.Watermark.Text = "Splix/Gamesneeze.cc/Atlanta.Space Beta 1.01"
+        Visuals.Watermark.Size = 13
+        Visuals.Watermark.Font = 2
+        Visuals.Watermark.Outline = true
+        Visuals.Watermark.Color = Color3.fromRGB(255, 0, 0)
+        Visuals.Watermark.Visible = false
     end
     --
     do -- Saving
@@ -2473,75 +2470,75 @@ do -- Visuals
                 Self.Highlight.Parent = Storage
                 --
                 do -- Renders.Name
-                    SetRenderProperty(Self.Renders.Name, "Text", Self.Player.Name)
-                    SetRenderProperty(Self.Renders.Name, "Size", 13)
-                    SetRenderProperty(Self.Renders.Name, "Center", true)
-                    SetRenderProperty(Self.Renders.Name, "Outline", true)
-                    SetRenderProperty(Self.Renders.Name, "Font", 2)
-                    SetRenderProperty(Self.Renders.Name, "Visible", false)
+                    Self.Renders.Name.Text = Self.Player.Name
+                    Self.Renders.Name.Size = 13
+                    Self.Renders.Name.Center = true
+                    Self.Renders.Name.Outline = true
+                    Self.Renders.Name.Font = 2
+                    Self.Renders.Name.Visible = false
                 end
                 --
                 do -- Renders.Box
                     -- Inline
-                    SetRenderProperty(Self.Renders.BoxInline, "Thickness", 1.25)
-                    SetRenderProperty(Self.Renders.BoxInline, "Filled", false)
-                    SetRenderProperty(Self.Renders.BoxInline, "Visible", false)
+                    Self.Renders.BoxInline.Thickness =1.25
+                    Self.Renders.BoxInline.Filled = false
+                    Self.Renders.BoxInline.Visible = false
                     -- Outline
-                    SetRenderProperty(Self.Renders.BoxOutline, "Thickness", 2.5)
-                    SetRenderProperty(Self.Renders.BoxOutline, "Filled", false)
-                    SetRenderProperty(Self.Renders.BoxOutline, "Visible", false)
+                    Self.Renders.BoxOutline.Thickness = 2.5
+                    Self.Renders.BoxOutline.Filled = false
+                    Self.Renders.BoxOutline.Visible = false
                     -- Fill
-                    SetRenderProperty(Self.Renders.BoxFill, "Filled", true)
-                    SetRenderProperty(Self.Renders.BoxFill, "Visible", false)
+                    Self.Renders.BoxFill.Filled = true
+                    Self.Renders.BoxFill.Visible = false
                 end
                 --
                 do -- Renders.HealthBar
                     -- Inline
-                    SetRenderProperty(Self.Renders.HealthBarInline, "Filled", true)
-                    SetRenderProperty(Self.Renders.HealthBarInline, "Visible", false)
+                    Self.Renders.HealthBarInline.Filled = true
+                    Self.Renders.HealthBarInline.Visible = false
                     -- Outline
-                    SetRenderProperty(Self.Renders.HealthBarOutline, "Filled", true)
-                    SetRenderProperty(Self.Renders.HealthBarOutline, "Visible", false)
+                    Self.Renders.HealthBarOutline.Filled = true
+                    Self.Renders.HealthBarOutline.Visible = false
                     -- Value
-                    SetRenderProperty(Self.Renders.HealthBarValue, "Size", 13)
-                    SetRenderProperty(Self.Renders.HealthBarValue, "Center", false)
-                    SetRenderProperty(Self.Renders.HealthBarValue, "Outline", true)
-                    SetRenderProperty(Self.Renders.HealthBarValue, "Font", 2)
-                    SetRenderProperty(Self.Renders.HealthBarValue, "Visible", false)
+                    Self.Renders.HealthBarValue.Size = 13
+                    Self.Renders.HealthBarValue.Center = false
+                    Self.Renders.HealthBarValue.Outline = true
+                    Self.Renders.HealthBarValue.Font = 2
+                    Self.Renders.HealthBarValue.Visible = false
                 end
                 --
                 do -- Renders.Flags
-                    SetRenderProperty(Self.Renders.Flags, "Size", 13)
-                    SetRenderProperty(Self.Renders.Flags, "Center", false)
-                    SetRenderProperty(Self.Renders.Flags, "Outline", true)
-                    SetRenderProperty(Self.Renders.Flags, "Font", 2)
-                    SetRenderProperty(Self.Renders.Flags, "Visible", false)
+                    Self.Renders.Flags.Size = 13
+                    Self.Renders.Flags.Center = false
+                    Self.Renders.Flags.Outline = true
+                    Self.Renders.Flags.Font" = 2
+                    Self.Renders.Flags.Visible = false
                 end
                 --
                 do -- Renders.Distance
-                    SetRenderProperty(Self.Renders.Distance, "Size", 13)
-                    SetRenderProperty(Self.Renders.Distance, "Center", true)
-                    SetRenderProperty(Self.Renders.Distance, "Outline", true)
-                    SetRenderProperty(Self.Renders.Distance, "Font", 2)
-                    SetRenderProperty(Self.Renders.Distance, "Visible", false)
+                    Self.Renders.Distance.Size = 13
+                    Self.Renders.Distance.Center = true
+                    Self.Renders.Distance.Outline = true
+                    Self.Renders.Distance.Font = 2
+                    Self.Renders.Distance.Visible = false
                 end
                 --
                 do -- Renders.Weapon
-                    SetRenderProperty(Self.Renders.Weapon, "Size", 13)
-                    SetRenderProperty(Self.Renders.Weapon, "Center", true)
-                    SetRenderProperty(Self.Renders.Weapon, "Outline", true)
-                    SetRenderProperty(Self.Renders.Weapon, "Font", 2)
-                    SetRenderProperty(Self.Renders.Weapon, "Visible", false)
+                    Self.Renders.Weapon.Size = 13
+                    Self.Renders.Weapon.Center = true
+                    Self.Renders.Weapon.Outline = true
+                    Self.Renders.Weapon.Font = 2
+                    Self.Renders.Weapon.Visible = false
                 end
                 --
                 do -- Renders.Arrow
                     -- Inline
-                    SetRenderProperty(Self.Renders.Arrow, "Filled", true)
-                    SetRenderProperty(Self.Renders.Arrow, "Visible", false)
+                    Self.Renders.Arrow.Filled = true
+                    Self.Renders.Arrow.Visible = false
                     -- Outline
-                    SetRenderProperty(Self.Renders.ArrowOutline, "Filled", false)
-                    SetRenderProperty(Self.Renders.ArrowOutline, "Visible", false)
-                    SetRenderProperty(Self.Renders.ArrowOutline, "Thickness", 1.5)
+                    Self.Renders.ArrowOutline.Filled = false
+                    Self.Renders.ArrowOutline.Visible = false
+                    Self.Renders.ArrowOutline.Thickness = 1.5
                 end
                 --
                 Visuals.Bases[Properties.Player] = Self
@@ -2616,22 +2613,22 @@ do -- Visuals
             local AimAssistSides = Flags["VisualsFOV_AimAssistSides"]:Get()
             local FieldOfView = Atlanta.Locals.VisualAimAssistFOV / 2
             --
-            SetRenderProperty(Visuals.AimAssistCircle, "Position", MouseLocation)
-            SetRenderProperty(Visuals.AimAssistCircle, "Color", AimAssistColor1)
-            SetRenderProperty(Visuals.AimAssistCircle, "Transparency", 1 - AimAssistTransparency1)
-            SetRenderProperty(Visuals.AimAssistCircle, "Radius", FieldOfView)
-            SetRenderProperty(Visuals.AimAssistCircle, "NumSides", AimAssistSides)
-            SetRenderProperty(Visuals.AimAssistCircle, "Visible", true)
+            Visuals.AimAssistCircle.Position=MouseLocation
+            Visuals.AimAssistCircle.Color=AimAssistColor1
+            Visuals.AimAssistCircle.Transparency=1 - AimAssistTransparency1
+            Visuals.AimAssistCircle.Radius=FieldOfView
+            Visuals.AimAssistCircle.NumSides=AimAssistSides
+            Visuals.AimAssistCircle.Visible=true
             --
-            SetRenderProperty(Visuals.AimAssistOutline, "Position", MouseLocation)
-            SetRenderProperty(Visuals.AimAssistOutline, "Color", AimAssistColor2)
-            SetRenderProperty(Visuals.AimAssistOutline, "Transparency", 1 - AimAssistTransparency2)
-            SetRenderProperty(Visuals.AimAssistOutline, "Radius", FieldOfView)
-            SetRenderProperty(Visuals.AimAssistOutline, "NumSides", AimAssistSides)
-            SetRenderProperty(Visuals.AimAssistOutline, "Visible", true)
+            Visuals.AimAssistOutline.Position=MouseLocation
+            Visuals.AimAssistOutline.Color=AimAssistColor2
+            Visuals.AimAssistOutline.Transparency=1 - AimAssistTransparency2
+            Visuals.AimAssistOutline.Radius=FieldOfView
+            Visuals.AimAssistOutline.NumSides=AimAssistSides
+            Visuals.AimAssistOutline.Visible=true
         else
-            SetRenderProperty(Visuals.AimAssistCircle, "Visible", false)
-            SetRenderProperty(Visuals.AimAssistOutline, "Visible", false)
+            Visuals.AimAssistCircle.Visible=false
+            Visuals.AimAssistOutline.Visible=false
         end
         --
         if Flags["VisualsFOV_Deadzone"]:Get() and Flags["LegitAimAssist_Enabled"]:Get() and not Flags["LegitAimAssist_Deadzone"].Disabled and not Flags["LegitAimAssist_FieldOfView"].Disabled then
@@ -2640,25 +2637,25 @@ do -- Visuals
             local AimAssistSides = Flags["VisualsFOV_DeadzoneSides"]:Get()
             local FieldOfView = Atlanta.Locals.VisualDeadzoneFOV / 2
             --
-            SetRenderProperty(Visuals.DeadzoneCircle, "Position", MouseLocation)
-            SetRenderProperty(Visuals.DeadzoneCircle, "Color", DeadzoneColor1)
-            SetRenderProperty(Visuals.DeadzoneCircle, "Transparency", 1 - DeadzoneTransparency1)
-            SetRenderProperty(Visuals.DeadzoneCircle, "Radius", FieldOfView)
-            SetRenderProperty(Visuals.DeadzoneCircle, "NumSides", AimAssistSides)
-            SetRenderProperty(Visuals.DeadzoneCircle, "Visible", true)
+            Visuals.DeadzoneCircle.Position=MouseLocation
+            Visuals.DeadzoneCircle.Color=DeadzoneColor1
+            Visuals.DeadzoneCircle.Transparency=1 - DeadzoneTransparency1
+            Visuals.DeadzoneCircle.Radius=FieldOfView
+            Visuals.DeadzoneCircle.NumSides=AimAssistSides
+            Visuals.DeadzoneCircle.Visible=true
             --
-            SetRenderProperty(Visuals.DeadzoneOutline, "Position", MouseLocation)
-            SetRenderProperty(Visuals.DeadzoneOutline, "Color", DeadzoneColor2)
-            SetRenderProperty(Visuals.DeadzoneOutline, "Transparency", 1 - DeadzoneTransparency2)
-            SetRenderProperty(Visuals.DeadzoneOutline, "Radius", FieldOfView)
-            SetRenderProperty(Visuals.DeadzoneOutline, "NumSides", AimAssistSides)
-            SetRenderProperty(Visuals.DeadzoneOutline, "Visible", true)
+            (Visuals.DeadzoneOutline.Position=MouseLocation
+            (Visuals.DeadzoneOutline.Color=DeadzoneColor2
+            (Visuals.DeadzoneOutline.Transparency=1 - DeadzoneTransparency2
+            (Visuals.DeadzoneOutline.Radius=FieldOfView
+            (Visuals.DeadzoneOutline.NumSides=AimAssistSides
+            (Visuals.DeadzoneOutline.Visible=true
         else
-            SetRenderProperty(Visuals.DeadzoneCircle, "Visible", false)
-            SetRenderProperty(Visuals.DeadzoneOutline, "Visible", false)
+            Visuals.DeadzoneCircle.Visible=false
+            Visuals.DeadzoneOutline.Visible=false
         end
         --
-        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (GetRenderProperty(Visuals.Watermark, "TextBounds").X) - 10, 10))
+        Visuals.Watermark.Position=Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (Visuals.Watermark.TextBounds.X) - 10, 10)
         --
         if Flags["VisualsCursor_Cursor"]:Get() then
             local CursorColor, CursorTransparency = Flags["VisualsCursor_CursorColor"]:Get().Color, Flags["VisualsCursor_CursorColor"]:Get().Transparency
@@ -2686,48 +2683,48 @@ do -- Visuals
                 local Sine = Sin(SmoothAngle + (Index * (Pi / Half)))
                 local Take = Spinning and 0 or (Index == 2 and 1 or Index == 3 and 1 or 0)
                 --
-                SetRenderProperty(Value[1], "From", Position + Vector2.new(Cosine * ((Gap - Take) - 1), Sine * ((Gap - Take) - 1)))
-                SetRenderProperty(Value[1], "To", Position + Vector2.new(Cosine * (Gap + Size - SmoothSize + 1), Sine * (Gap + Size - SmoothSize + 1)))
-                SetRenderProperty(Value[1], "Visible", true)
-                SetRenderProperty(Value[1], "Color", Color3.fromRGB(0, 0, 0))
-                SetRenderProperty(Value[1], "Thickness", Thickness + 2)
-                SetRenderProperty(Value[1], "Transparency", 1 - CursorTransparency)
-                SetRenderProperty(Value[1], "ZIndex", 59)
+                Value[1].From=Position + Vector2.new(Cosine * ((Gap - Take) - 1), Sine * ((Gap - Take) - 1))
+                Value[1].To=Position + Vector2.new(Cosine * (Gap + Size - SmoothSize + 1), Sine * (Gap + Size - SmoothSize + 1))
+                Value[1].Visible=true
+                Value[1].Color=Color3.fromRGB(0, 0, 0)
+                Value[1].Thickness=Thickness + 2
+                Value[1].Transparency=1 - CursorTransparency
+                Value[1].ZIndex=59
                 --
-                SetRenderProperty(Value[2], "From", Position + Vector2.new(Cosine * (Gap - Take), Sine * (Gap - Take)))
-                SetRenderProperty(Value[2], "To", Position + Vector2.new(Cosine * (Gap + Size - SmoothSize), Sine * (Gap + Size - SmoothSize)))
-                SetRenderProperty(Value[2], "Visible", true)
-                SetRenderProperty(Value[2], "Thickness", Thickness)
-                SetRenderProperty(Value[2], "Color", CursorColor)
-                SetRenderProperty(Value[2], "Transparency", 1 - CursorTransparency)
-                SetRenderProperty(Value[2], "ZIndex", 60)
+                Value[2].From=Position + Vector2.new(Cosine * (Gap - Take), Sine * (Gap - Take))
+                Value[2].To=Position + Vector2.new(Cosine * (Gap + Size - SmoothSize), Sine * (Gap + Size - SmoothSize))
+                Value[2].Visible=true
+                Value[2].Thickness=Thickness
+                Value[2].Color=CursorColor
+                Value[2].Transparency=1 - CursorTransparency
+                Value[2].ZIndex=60
             end
             --
             for Index, Value in pairs(Visuals.CursorDot) do
-                SetRenderProperty(Visuals.CursorDot[1], "Position", Position - Vector2.new(1, 1))
-                SetRenderProperty(Visuals.CursorDot[1], "Size", Vector2.new(3, 3))
-                SetRenderProperty(Visuals.CursorDot[1], "Visible", Dot)
-                SetRenderProperty(Visuals.CursorDot[1], "Filled", true)
-                SetRenderProperty(Visuals.CursorDot[1], "Color", Color3.fromRGB(0, 0, 0))
-                SetRenderProperty(Visuals.CursorDot[1], "Transparency", 1 - DotTransparency)
-                SetRenderProperty(Visuals.CursorDot[1], "ZIndex", 59)
+                Visuals.CursorDot[1].Position=Position - Vector2.new(1, 1)
+                Visuals.CursorDot[1].Size=Vector2.new(3, 3)
+                Visuals.CursorDot[1].Visible=Dot
+                Visuals.CursorDot[1].Filled=true
+                Visuals.CursorDot[1].Color=Color3.fromRGB(0, 0, 0)
+                Visuals.CursorDot[1].Transparency=1 - DotTransparency
+                Visuals.CursorDot[1].ZIndex=59
                 --
-                SetRenderProperty(Visuals.CursorDot[2], "Position", Position)
-                SetRenderProperty(Visuals.CursorDot[2], "Size", Vector2.new(1, 1))
-                SetRenderProperty(Visuals.CursorDot[2], "Visible", Dot)
-                SetRenderProperty(Visuals.CursorDot[2], "Filled", true)
-                SetRenderProperty(Visuals.CursorDot[2], "Color", DotColor)
-                SetRenderProperty(Visuals.CursorDot[2], "Transparency", 1 - DotTransparency)
-                SetRenderProperty(Visuals.CursorDot[2], "ZIndex", 60)
+                Visuals.CursorDot[2].Position=Position
+                Visuals.CursorDot[2].Size=Vector2.new(1, 1)
+                Visuals.CursorDot[2].Visible=Dot
+                Visuals.CursorDot[2].Filled=true
+                Visuals.CursorDot[2].Color=DotColor
+                Visuals.CursorDot[2].Transparency=1 - DotTransparency
+                Visuals.CursorDot[2].ZIndex=60
             end
         else
             for Index, Value in pairs(Visuals.Cursor) do
-                SetRenderProperty(Value[1], "Visible", false)
-                SetRenderProperty(Value[2], "Visible", false)
+                Value[1].Visible=false
+                Value[2].Visible=false
             end
             --
             for Index, Value in pairs(Visuals.CursorDot) do
-                SetRenderProperty(Value, "Visible", false)
+                Value.Visible=false
             end
         end
     end
@@ -2738,21 +2735,21 @@ do -- Visuals
         end
         --
         for Index, Value in pairs(Visuals.Cursor) do
-            DestroyRenderObject(Value[1])
-            DestroyRenderObject(Value[2])
+            Value[1]:Remove()
+            Value[2]:Remove()
         end
         --
         for Index, Value in pairs(Visuals.CursorDot) do
-            DestroyRenderObject(Value)
+            Value:Remove()
         end
         --
         for Index = 1, 2 do
             local Circle = Index == 1 and "AimAssist" or "Deadzone"
-            DestroyRenderObject(Visuals[Circle .. "Circle"])
-            DestroyRenderObject(Visuals[Circle .. "Outline"])
+            Visuals[Circle .. "Circle"]:Remove()
+            Visuals[Circle .. "Outline"]:Remove()
         end
         --
-        DestroyRenderObject(Visuals.Watermark)
+        Visuals.Watermark)
         --
         for Index, Value in pairs(Atlanta.Locals.Lighting) do
             Lighting[Index] = Value
@@ -2772,7 +2769,7 @@ do -- Visuals
             Self.Object = nil
             --
             for Index, Value in pairs(Self.Renders) do
-                DestroyRenderObject(Value)
+                Value:Remove()
             end
             --
             Self.Highlight:Remove()
@@ -2790,7 +2787,7 @@ do -- Visuals
             local Renders = rawget(Self, "Renders")
             --
             for Index, Value in pairs(typeof(Table) == "table" and Table or Renders) do
-                SetRenderProperty(typeof(Table) == "table" and Renders[Value] or Value, "Visible", State)
+                (typeof(Table) == "table" and Renders[Value] or Value).Visible = State
             end
             --
             Self.Highlight.Adornee = nil
@@ -2893,25 +2890,25 @@ do -- Visuals
                                     local ArrowColor, ArrowTransparency = Override or Flags[Selection .. "ArrowColor"]:Get().Color, ((1 - Flags[Selection .. "ArrowColor"]:Get().Transparency) * TransparencyMultplier)
                                     --
                                     do -- Offscreen Arrows
-                                        SetRenderProperty(Renders.Arrow, "PointA", PointA)
-                                        SetRenderProperty(Renders.Arrow, "PointB", PointB)
-                                        SetRenderProperty(Renders.Arrow, "PointC", PointC)
-                                        SetRenderProperty(Renders.Arrow, "Visible", true)
-                                        SetRenderProperty(Renders.Arrow, "Color", ArrowColor)
-                                        SetRenderProperty(Renders.Arrow, "Transparency", ArrowTransparency)
+                                        Renders.Arrow.PointA=PointA
+                                        Renders.Arrow.PointB=PointB
+                                        Renders.Arrow.PointC=PointC
+                                        Renders.Arrow.Visible=true
+                                        Renders.Arrow.Color=ArrowColor
+                                        Renders.Arrow.Transparency=ArrowTransparency
                                         --
-                                        SetRenderProperty(Renders.ArrowOutline, "PointA", PointA)
-                                        SetRenderProperty(Renders.ArrowOutline, "PointB", PointB)
-                                        SetRenderProperty(Renders.ArrowOutline, "PointC", PointC)
-                                        SetRenderProperty(Renders.ArrowOutline, "Visible", true)
-                                        SetRenderProperty(Renders.ArrowOutline, "Color", Color:Add(Color:Multiply(ArrowColor, 0.2), 0.1))
-                                        SetRenderProperty(Renders.ArrowOutline, "Transparency", ArrowTransparency)
+                                        Renders.ArrowOutline.PointA=PointA
+                                        Renders.ArrowOutline.PointB=PointB
+                                        Renders.ArrowOutline.PointC=PointC
+                                        Renders.ArrowOutline.Visible=true
+                                        Renders.ArrowOutline.Color=Color:Add(Color:Multiply(ArrowColor, 0.2), 0.1)
+                                        Renders.ArrowOutline.Transparency=ArrowTransparency
                                     end
                                     --
-                                    SetRenderProperty(Renders.BoxInline, "Visible", false)
-                                    SetRenderProperty(Renders.BoxOutline, "Visible", false)
-                                    SetRenderProperty(Renders.BoxFill, "Visible", false)
-                                    SetRenderProperty(Renders.Flags, "Visible", false)
+                                    Renders.BoxInline.Visible=false
+                                    Renders.BoxOutline.Visible=false
+                                    Renders.BoxFill.Visible=false
+                                    Renders.Flags.Visible=false
                                 end
                             end
                         else
@@ -2938,26 +2935,26 @@ do -- Visuals
                                         local BoxColor1, BoxTransparency1 = Override or Flags[Selection .. "BoxColor"]:Get().Color, ((1 - Flags[Selection .. "BoxColor"]:Get().Transparency) * TransparencyMultplier)
                                         local BoxColor2, BoxTransparency2 = Override or Flags[Selection .. "BoxFill"]:Get().Color, ((1 - Flags[Selection .. "BoxFill"]:Get().Transparency) * TransparencyMultplier)
                                         -- Inline
-                                        SetRenderProperty(Renders.BoxInline, "Size", BoxSize)
-                                        SetRenderProperty(Renders.BoxInline, "Position", BoxPosition)
-                                        SetRenderProperty(Renders.BoxInline, "Visible", true)
-                                        SetRenderProperty(Renders.BoxInline, "Color", BoxColor1)
-                                        SetRenderProperty(Renders.BoxInline, "Transparency", BoxTransparency1)
+                                        Renders.BoxInline.Size= BoxSize
+                                        Renders.BoxInline.Position=BoxPosition
+                                        Renders.BoxInline.Visible=true
+                                        Renders.BoxInline.Color=BoxColor1
+                                        Renders.BoxInline.Transparency=BoxTransparency1
                                         -- Outline
-                                        SetRenderProperty(Renders.BoxOutline, "Size", BoxSize)
-                                        SetRenderProperty(Renders.BoxOutline, "Position", BoxPosition)
-                                        SetRenderProperty(Renders.BoxOutline, "Visible", true)
-                                        SetRenderProperty(Renders.BoxOutline, "Transparency", BoxTransparency1)
+                                        Renders.BoxOutline.Size=BoxSize
+                                        Renders.BoxOutline.Position=BoxPosition
+                                        Renders.BoxOutline.Visible=true
+                                        Renders.BoxOutline.Transparency=BoxTransparency1
                                         -- Fill
-                                        SetRenderProperty(Renders.BoxFill, "Size", BoxSize)
-                                        SetRenderProperty(Renders.BoxFill, "Position", BoxPosition)
-                                        SetRenderProperty(Renders.BoxFill, "Visible", true)
-                                        SetRenderProperty(Renders.BoxFill, "Color", BoxColor2)
-                                        SetRenderProperty(Renders.BoxFill, "Transparency", BoxTransparency2)
+                                        Renders.BoxFill.Size=BoxSize
+                                        Renders.BoxFill.Position=BoxPosition
+                                        Renders.BoxFill.Visible=true
+                                        Renders.BoxFill.Color=BoxColor2
+                                        Renders.BoxFill.Transparency=BoxTransparency2
                                     else
-                                        SetRenderProperty(Renders.BoxInline, "Visible", false)
-                                        SetRenderProperty(Renders.BoxOutline, "Visible", false)
-                                        SetRenderProperty(Renders.BoxFill, "Visible", false)
+                                        Renders.BoxInline.Visible=false
+                                        Renders.BoxOutline.Visible=false
+                                        Renders.BoxFill.Visible=false
                                     end
                                 end
                                 --
@@ -2986,18 +2983,18 @@ do -- Visuals
                                         --
                                         local Text = Utility:ClampString(Utility:TableToString(CurrentFlags), BoxSize.Y)
                                         --
-                                        SetRenderProperty(Renders.Flags, "Text", Text)
-                                        SetRenderProperty(Renders.Flags, "Position", BoxPosition + Vector2.new(BoxSize.X + 4, 0))
-                                        SetRenderProperty(Renders.Flags, "Visible", true)
-                                        SetRenderProperty(Renders.Flags, "Color", FlagsColor)
-                                        SetRenderProperty(Renders.Flags, "Transparency", FlagsTransparency)
+                                        Renders.Flags.Text=Text
+                                        Renders.Flags.Position=BoxPosition + Vector2.new(BoxSize.X + 4, 0)
+                                        Renders.Flags.Visible=true
+                                        Renders.Flags.Color=FlagsColor
+                                        Renders.Flags.Transparency=FlagsTransparency
                                     else
-                                        SetRenderProperty(Renders.Flags, "Visible", false)
+                                        Renders.Flags.Visible = false
                                     end
                                 end
                                 --
-                                SetRenderProperty(Renders.Arrow, "Visible", false)
-                                SetRenderProperty(Renders.ArrowOutline, "Visible", false)
+                                Renders.Arrow.Visible=false
+                                Renders.ArrowOutline.Visible=false
                             end
                         end
                         --
@@ -3068,13 +3065,13 @@ do -- Visuals
                                         Text = TextSurround:sub(0, 1) .. Text .. TextSurround:sub(2)
                                     end
                                     --
-                                    SetRenderProperty(Renders.Name, "Text", Text)
-                                    SetRenderProperty(Renders.Name, "Position", BoxPosition + Vector2.new(BoxSize.X / 2, -(13 + 4)))
-                                    SetRenderProperty(Renders.Name, "Visible", true)
-                                    SetRenderProperty(Renders.Name, "Color", NameColor)
-                                    SetRenderProperty(Renders.Name, "Transparency", NameTransparency)
+                                    Renders.Name.Text=Text
+                                    Renders.Name.Position=BoxPosition + Vector2.new(BoxSize.X / 2, -(13 + 4))
+                                    Renders.Name.Visible=true
+                                    Renders.Name.Color=NameColor
+                                    Renders.Name.Transparency=NameTransparency
                                 else
-                                    SetRenderProperty(Renders.Name, "Visible", false)
+                                    Renders.Name.Visible=false
                                 end
                             end 
                             --
@@ -3098,32 +3095,32 @@ do -- Visuals
                                 --
                                 if HealthBarEnabled then
                                     -- Inline
-                                    SetRenderProperty(Renders.HealthBarInline, "Color", Color)
-                                    SetRenderProperty(Renders.HealthBarInline, "Size", Vector2.new(2, HealthSize))
-                                    SetRenderProperty(Renders.HealthBarInline, "Position", Vector2.new(BoxPosition.X - 5, Height))
-                                    SetRenderProperty(Renders.HealthBarInline, "Visible", true)
-                                    SetRenderProperty(Renders.HealthBarInline, "Transparency", HealthBarTransparency)
+                                    Renders.HealthBarInline.Color=Color
+                                    Renders.HealthBarInline.Size=Vector2.new(2, HealthSize)
+                                    Renders.HealthBarInline.Position=Vector2.new(BoxPosition.X - 5, Height)
+                                    Renders.HealthBarInline.Visible=true
+                                    Renders.HealthBarInline.Transparency=HealthBarTransparency
                                     -- Outline
-                                    SetRenderProperty(Renders.HealthBarOutline, "Size", Vector2.new(4, BoxSize.Y + 2))
-                                    SetRenderProperty(Renders.HealthBarOutline, "Position", Vector2.new(BoxPosition.X - 6, BoxPosition.Y - 1))
-                                    SetRenderProperty(Renders.HealthBarOutline, "Visible", true)
-                                    SetRenderProperty(Renders.HealthBarOutline, "Transparency", HealthBarTransparency)
+                                    Renders.HealthBarOutline.Size=Vector2.new(4, BoxSize.Y + 2)
+                                    Renders.HealthBarOutline.Position=Vector2.new(BoxPosition.X - 6, BoxPosition.Y - 1)
+                                    Renders.HealthBarOutline.Visible=true
+                                    Renders.HealthBarOutline.Transparency=HealthBarTransparency
                                 else
-                                    SetRenderProperty(Renders.HealthBarInline, "Visible", false)
-                                    SetRenderProperty(Renders.HealthBarOutline, "Visible", false)
+                                    Renders.HealthBarInline.Visible=false
+                                    Renders.HealthBarOutline.Visible=false
                                 end
                                 --
                                 if HealthNumEnabled then
                                     -- Value
                                     local Text = Utility:ClampString(tostring(Round(Info.Health)), BoxSize.Y)
                                     --
-                                    SetRenderProperty(Renders.HealthBarValue, "Text", Text)
-                                    SetRenderProperty(Renders.HealthBarValue, "Color", Color)
-                                    SetRenderProperty(Renders.HealthBarValue, "Position", Vector2.new(BoxPosition.X - (HealthBarEnabled and 8 or 4) - (#Text * 8), Clamp(Height, 0, Height + HealthSize - (HealthSize > 13 and 13 or 0))))
-                                    SetRenderProperty(Renders.HealthBarValue, "Visible", true)
-                                    SetRenderProperty(Renders.HealthBarValue, "Transparency", HealthBarTransparency)
+                                    Renders.HealthBarValue.Text=Text
+                                    Renders.HealthBarValue.Color=Color
+                                    Renders.HealthBarValue.Position=Vector2.new(BoxPosition.X - (HealthBarEnabled and 8 or 4) - (#Text * 8), Clamp(Height, 0, Height + HealthSize - (HealthSize > 13 and 13 or 0)))
+                                    Renders.HealthBarValue.Visible=true
+                                    Renders.HealthBarValue.Transparency=HealthBarTransparency
                                 else
-                                    SetRenderProperty(Renders.HealthBarValue, "Visible", false)
+                                    Renders.HealthBarValue.Visible=false
                                 end
                             end
                             --
@@ -3139,13 +3136,13 @@ do -- Visuals
                                 if DistanceEnabled then
                                     local DistanceColor, DistanceTransparency = Override or Flags[Selection .. "DistanceColor"]:Get().Color, ((1 - Flags[Selection .. "DistanceColor"]:Get().Transparency) * TransparencyMultplier)
                                     --
-                                    SetRenderProperty(Renders.Distance, "Text", ("%s%s"):format(Rounded, Measurement))
-                                    SetRenderProperty(Renders.Distance, "Position", BoxPosition + Vector2.new(BoxSize.X / 2, (BoxSize.Y + 4)))
-                                    SetRenderProperty(Renders.Distance, "Visible", true)
-                                    SetRenderProperty(Renders.Distance, "Color", DistanceColor)
-                                    SetRenderProperty(Renders.Distance, "Transparency", DistanceTransparency)
+                                    Renders.Distance.Text=("%s%s"):format(Rounded, Measurement)
+                                    Renders.Distance.Position=BoxPosition + Vector2.new(BoxSize.X / 2, (BoxSize.Y + 4))
+                                    Renders.Distance.Visible=true
+                                    Renders.Distance.Color=DistanceColor
+                                    Renders.Distance.Transparency=DistanceTransparency
                                 else
-                                    SetRenderProperty(Renders.Distance, "Visible", false)
+                                    Renders.Distance.Visible=false
                                 end
                             end
                             --
@@ -3161,13 +3158,13 @@ do -- Visuals
                                 if WeaponEnabled then
                                     local WeaponColor, WeaponTransparency = Override and Color3.fromHSV(Orhue, Orsaturation, Orvalue - 0.2) or Flags[Selection .. "ToolColor"]:Get().Color, ((1 - Flags[Selection .. "ToolColor"]:Get().Transparency) * TransparencyMultplier)
                                     --
-                                    SetRenderProperty(Renders.Weapon, "Text", ("%s"):format("None"))
-                                    SetRenderProperty(Renders.Weapon, "Position", BoxPosition + Vector2.new(BoxSize.X / 2, (BoxSize.Y + 4 + (DistanceEnabled and 13 or 0))))
-                                    SetRenderProperty(Renders.Weapon, "Visible", true)
-                                    SetRenderProperty(Renders.Weapon, "Color", WeaponColor)
-                                    SetRenderProperty(Renders.Weapon, "Transparency", WeaponTransparency)
+                                    Renders.Weapon.Text=("%s"):format("None")
+                                    Renders.Weapon.Position=BoxPosition + Vector2.new(BoxSize.X / 2, (BoxSize.Y + 4 + (DistanceEnabled and 13 or 0)))
+                                    Renders.Weapon.Visible=true
+                                    Renders.Weapon.Color=WeaponColor
+                                    Renders.Weapon.Transparency=WeaponTransparency
                                 else
-                                    SetRenderProperty(Renders.Weapon, "Visible", false)
+                                    Renders.Weapon.Visible = false
                                 end
                             end
                             --
