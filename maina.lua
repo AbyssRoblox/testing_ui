@@ -345,7 +345,6 @@ local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desyn
 --
 local CreateRenderObject = Drawing.new
 local SetRenderProperty = setrenderproperty
-local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 4)
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
 --
@@ -2656,7 +2655,7 @@ do -- Visuals
             SetRenderProperty(Visuals.DeadzoneOutline, "Visible", false)
         end
         --
-        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (GetRenderProperty(Visuals.Watermark, "TextBounds").X) - 10, 10))
+        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (Visuals.Watermark.TextBounds.X) - 10, 10)
         --
         if Flags["VisualsCursor_Cursor"]:Get() then
             local CursorColor, CursorTransparency = Flags["VisualsCursor_CursorColor"]:Get().Color, Flags["VisualsCursor_CursorColor"]:Get().Transparency
