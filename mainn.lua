@@ -343,10 +343,8 @@ local NfcNormalize, NfdNormalize, CharPattern, CodePoint, Graphemes, Offset, Cod
 local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = coroutine.isyieldable, coroutine.running, coroutine.status, coroutine.create, coroutine.resume, coroutine.close, coroutine.yield, coroutine.wrap
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
-local CreateRenderObject = GetUpvalue(Drawing.new, 1)
-local DestroyRenderObject = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 3)
-local SetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__newindex, 4)
-local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 4)
+local CreateRenderObject = Drawing.new, 1
+local SetRenderProperty = setrenderproperty
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
 --
@@ -2657,7 +2655,7 @@ do -- Visuals
             SetRenderProperty(Visuals.DeadzoneOutline, "Visible", false)
         end
         --
-        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (GetRenderProperty(Visuals.Watermark, "TextBounds").X) - 10, 10))
+        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (Visuals.Watermark.TextBounds.X) - 10, 10)
         --
         if Flags["VisualsCursor_Cursor"]:Get() then
             local CursorColor, CursorTransparency = Flags["VisualsCursor_CursorColor"]:Get().Color, Flags["VisualsCursor_CursorColor"]:Get().Transparency
@@ -2737,21 +2735,21 @@ do -- Visuals
         end
         --
         for Index, Value in pairs(Visuals.Cursor) do
-            DestroyRenderObject(Value[1])
-            DestroyRenderObject(Value[2])
+            Value[1]:Remove()
+            Value[2]:Remove()
         end
         --
         for Index, Value in pairs(Visuals.CursorDot) do
-            DestroyRenderObject(Value)
+           Value:Remove()
         end
         --
         for Index = 1, 2 do
             local Circle = Index == 1 and "AimAssist" or "Deadzone"
-            DestroyRenderObject(Visuals[Circle .. "Circle"])
-            DestroyRenderObject(Visuals[Circle .. "Outline"])
+            Visuals[Circle .. "Circle"]:Remove()
+            Visuals[Circle .. "Outline"]:Remove()
         end
         --
-        DestroyRenderObject(Visuals.Watermark)
+        Visuals.Watermark:Remove()
         --
         for Index, Value in pairs(Atlanta.Locals.Lighting) do
             Lighting[Index] = Value
@@ -2771,7 +2769,7 @@ do -- Visuals
             Self.Object = nil
             --
             for Index, Value in pairs(Self.Renders) do
-                DestroyRenderObject(Value)
+                Value:Remove()
             end
             --
             Self.Highlight:Remove()
