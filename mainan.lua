@@ -70,9 +70,6 @@ do -- Folders
         end
     end
 end
-
---loadstring(game:HttpGet("https://raw.githubusercontent.com/matas3535/gamesneeze/main/Library.lua"))()
-
 -- // Tables
 local Library, Utility, Flags, Theme = loadfile("Atlanta/Library.lua")()
 --
@@ -347,7 +344,8 @@ local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = corouti
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
 local CreateRenderObject = Drawing.new
-local SetRenderProperty = setrenderproperty
+local SetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__newindex, 4)
+local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 4)
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
 --
@@ -2658,7 +2656,7 @@ do -- Visuals
             SetRenderProperty(Visuals.DeadzoneOutline, "Visible", false)
         end
         --
-        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (Visuals.Watermark.TextBounds.X) - 10, 10)
+        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (GetRenderProperty(Visuals.Watermark, "TextBounds").X) - 10, 10))
         --
         if Flags["VisualsCursor_Cursor"]:Get() then
             local CursorColor, CursorTransparency = Flags["VisualsCursor_CursorColor"]:Get().Color, Flags["VisualsCursor_CursorColor"]:Get().Transparency
@@ -2743,7 +2741,7 @@ do -- Visuals
         end
         --
         for Index, Value in pairs(Visuals.CursorDot) do
-           Value:Remove()
+            Value:Remove()
         end
         --
         for Index = 1, 2 do
@@ -3207,7 +3205,44 @@ do -- UI
     local Config = Window:Page({Name = Languages:GetTranslation("Configs")})
     --
     do -- // Content
-
+        do -- Legit
+            local Legit_AimAssist = Legit:Section({Name = Languages:GetTranslation("Aim Assist"), Fill = true})
+            local Legit_Triggerbot = Legit:Section({Name = Languages:GetTranslation("Trigger Bot"), Side = "Right"})
+            local Legit_Misc = Legit:Section({Name = Languages:GetTranslation("Misc"), Fill = true, Side = "Right"})
+            --
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Enabled"), Flag = "LegitAimAssist_Enabled"}):Keybind({Flag = "LegitAimAssist_EnabledKey", Default = Enum.KeyCode.E, KeybindName = Languages:GetTranslation("Aim Assist"), Mode = "On Hold"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Field Of View"), Flag = "LegitAimAssist_FieldOfView", Default = 12.5, Minimum = 0.5, Maximum = 100.5, Decimals = 0.01, Disable = {"Disabled", 1, 100}, Ending = "%"})
+            Legit_AimAssist:Dropdown({Flag = "LegitAimAssist_FOVType", Options = {"Static", "Dynamic"}, Default = "Static"})
+            Legit_AimAssist:Slider({Flag = "LegitAimAssist_Dynamic", Default = 25, Maximum = 100, Minimum = 1, Decimals = 0.01})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Horizontal Smoothing"), Flag = "LegitAimAssist_HorizontalSmoothing", Default = 12.5, Minimum = 1, Maximum = 100, Decimals = 0.01, Ending = "%"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Vertical Smoothing"), Flag = "LegitAimAssist_VerticalSmoothing", Default = 5, Minimum = 1, Maximum = 100, Decimals = 0.01, Ending = "%"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Dynamic Smoothing"), Flag = "LegitAimAssist_DynamicSmoothing", Default = 100.5, Maximum = 100.5, Minimum = 0.01, Decimals = 0.01, Disable = {"Disabled", 0.5, 100}})
+            Legit_AimAssist:Multibox({Name = Languages:GetTranslation("Aim Assist Checks"), Flag = "LegitAimAssist_Checks", Options = {"Team Check", "Wall Check", "Visible Check", "Forcefield Check", "Alive Check"}, Default = {"Team Check", "Wall Check", "Alive Check"}})
+            Legit_AimAssist:Multibox({Name = Languages:GetTranslation("Hit Boxes"), Flag = "LegitAimAssist_Hitbox", Options = {"Head", "Torso", "Arms", "Legs"}, Default = {"Head", "Torso"}, Minimum = 1})
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Randomise Hitbox Position"), Flag = "LegitAimAssist_RandomiseHitbox", Default = false})
+            Legit_AimAssist:Dropdown({Name = Languages:GetTranslation("Hitscan Type"), Flag = "LegitAimAssist_HitscanType", Options = {"Mouse", "Distance", "Health"}, Default = "Mouse"})
+            Legit_AimAssist:Dropdown({Name = Languages:GetTranslation("Wall Check Origin"), Flag = "LegitAimAssist_WallCheckOrigin", Options = {"Camera", "Head", "Torso"}, Default = "Camera"})
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Readjustment"), Flag = "LegitAimAssist_Readjustment"}):Keybind({Flag = "LegitAimAssist_ReadjustmentKey", Default = Enum.UserInputType.MouseButton2, KeybindName = Languages:GetTranslation("AB Readjustment"), Mode = "On Hold"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Deadzone"), Flag = "LegitAimAssist_Deadzone", Default = 100.5, Minimum = 0.5, Maximum = 100.5, Decimals = 0.01, Disable = {"Disabled", 1, 100}, Ending = "%"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Stutter"), Flag = "LegitAimAssist_Stutter", Default = 25, Maximum = 100.5, Minimum = 0.1, Decimals = 0.01, Disable = {"Disabled", 0.5, 100}, Ending = "t"})
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Humaniser"), Flag = "LegitAimAssist_Humaniser"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Humaniser Scale"), Flag = "LegitAimAssist_HumaniserScale", Default = 50, Maximum = 100.5, Minimum = 0.1, Decimals = 0.01, Disable = {"Disabled", 0.5, 100}, Ending = "t"})
+            --
+            Legit_Triggerbot:Toggle({Name = Languages:GetTranslation("Enabled"), Flag = "LegitTriggerbot_Enabled"}):Keybind({Flag = "LegitTriggerbot_EnabledKey", Default = "None", KeybindName = Languages:GetTranslation("Trigger Bot"), Mode = "Always"})
+            Legit_Triggerbot:Slider({Name = Languages:GetTranslation("Delay"), Flag = "LegitTriggerbot_Delay", Default = 12.5, Minimum = 0.5, Maximum = 500.5, Decimals = 1, Disable = {"Disabled", 1, 500}, Ending = "ms"})
+            Legit_Triggerbot:Slider({Name = Languages:GetTranslation("Interval"), Flag = "LegitTriggerbot_Interval", Default = 75, Minimum = 0.5, Maximum = 1000, Decimals = 1, Disable = {"Disabled", 1, 1000}, Ending = "ms"})
+            Legit_Triggerbot:Multibox({Name = Languages:GetTranslation("Trigger Bot Checks"), Flag = "LegitTriggerbot_Checks", Options = {"Team Check", "Wall Check", "Visible Check", "Forcefield Check", "Alive Check"}, Default = {"Team Check", "Wall Check", "Visible Check", "Alive Check"}})
+            Legit_Triggerbot:Multibox({Name = Languages:GetTranslation("Hit Boxes"), Flag = "LegitTriggerbot_Hitbox", Options = {"Head", "Torso", "Arms", "Legs"}, Default = {"Head", "Torso"}, Minimum = 1})
+            Legit_Triggerbot:Dropdown({Name = Languages:GetTranslation("Wall Check Origin"), Flag = "LegitTriggerbot_WallCheckOrigin", Options = {"Camera", "Head", "Torso"}, Default = "Camera"})
+            Legit_Triggerbot:Toggle({Name = Languages:GetTranslation("Readjustment"), Flag = "LegitTriggerbot_Readjustment"}):Keybind({Flag = "LegitTriggerbot_Readjustment", Default = Enum.UserInputType.MouseButton2, KeybindName = Languages:GetTranslation("TB Readjustment"), Mode = "On Hold"})
+            --
+            Legit_Misc:Toggle({Name = Languages:GetTranslation("Cursor Offset"), Flag = "LegitMisc_CursorOffset"})
+            Legit_Misc:Slider({Flag = "LegitMisc_CursorOffsetX", Default = 0, Minimum = -100, Maximum = 100, Ending = "px"})
+            Legit_Misc:Slider({Flag = "LegitMisc_CursorOffsetY", Default = 0, Minimum = -100, Maximum = 100, Ending = "px"})
+        end
+        --
+        do -- Rage
+        end
         --
         do -- Players
             local Players_Enemies, Players_Friendlies, Players_Local = Players2:MultiSection({Sections = {Languages:GetTranslation("Enemies"), Languages:GetTranslation("Friendlies"), Languages:GetTranslation("Local")}, Fill = true, Callback = function(Section)
@@ -3263,7 +3298,136 @@ do -- UI
             Players_Extra:Slider({Name = Languages:GetTranslation("ESP Fade Out"), Flag = "PlayersExtra_FadeOut", Default = 400, Minimum = 0, Maximum = 2501, MaximumText = 2500, Decimals = 1, Disable = {"Disabled", 0, 2501}, Ending = "ms"})
             Players_Extra:Dropdown({Name = Languages:GetTranslation("Distance Measurement"), Flag = "PlayersExtra_DistanceMeasurement", Max = 8, Options = {"Studs", "Meters", "Centimeters", "Kilometers", "Millimeters", "Micrometers", "Inches", "Miles", "Nautical Miles", "Yards", "Feet"}})
         end
-
+        --
+        do -- Visuals
+            local Visuals_Lighting = Visuals2:Section({Name = Languages:GetTranslation("Lighting")})
+            local Visuals_Camera = Visuals2:Section({Name = Languages:GetTranslation("Camera"), Side = "Right"})
+            local Visuals_FOV, Visuals_Cursor = Visuals2:MultiSection({Sections = {Languages:GetTranslation("Field Of View"), Languages:GetTranslation("Cursor")}, Fill = true, Side = "Right"})
+            local Visuals_Extra = Visuals2:Section({Name = Languages:GetTranslation("Extra"), Fill = true})
+            --
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Ambient"), Flag = "VisualsLighting_Ambient", Callback = Visuals.Refresh}):Colorpicker({Info = "Ambient", Flag = "VisualsLighting_AmbientColor1", Default = Color3.fromRGB(155, 100, 200), Callback = Visuals.Refresh});Flags["VisualsLighting_Ambient"]:Colorpicker({Info = "Outdoor Ambient", Flag = "VisualsLighting_AmbientColor2", Default = Color3.fromRGB(100, 200, 155), Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Brightness"), Flag = "VisualsLighting_Brightness", Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Flag = "VisualsLighting_BrightnessAmmount", Default = 3, Maximum = 25, Minimum = 0, Decimals = 0.1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Clock Time"), Flag = "VisualsLighting_ClockTime", Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Flag = "VisualsLighting_ClockTimeAmmount", Ending = "hr", Default = 2, Maximum = 24, Minimum = 0, Decimals = 0.1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Color Shift"), Flag = "VisualsLighting_ColorShift", Callback = Visuals.Refresh}):Colorpicker({Info = "Color Shift Bottom", Flag = "VisualsLighting_ColorShiftColor1", Default = Color3.fromRGB(65, 155, 155), Callback = Visuals.Refresh});Flags["VisualsLighting_ColorShift"]:Colorpicker({Info = "Color Shift Top", Flag = "VisualsLighting_ColorShiftColor2", Default = Color3.fromRGB(155, 65, 155), Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Exposure"), Flag = "VisualsLighting_Exposure", Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Flag = "VisualsLighting_ExposureAmmount", Default = 1, Maximum = 8, Minimum = -8, Decimals = 0.1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Fog"), Flag = "VisualsLighting_Fog", Callback = Visuals.Refresh}):Colorpicker({Info = "Fog Color", Flag = "VisualsLighting_FogColor", Default = Color3.fromRGB(200, 150, 225), Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Name = Languages:GetTranslation("Fog End"), Flag = "VisualsLighting_FogEnd", Default = 350, Maximum = 5000, Minimum = 0, Decimals = 1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Name = Languages:GetTranslation("Fog Start"), Flag = "VisualsLighting_FogStart", Default = 35, Maximum = 5000, Minimum = 0, Decimals = 1, Callback = Visuals.Refresh})
+            --
+            Visuals_Camera:Toggle({Name = Languages:GetTranslation("Field Of View "), Flag = "VisualsCamera_FOV", Callback = Visuals.Refresh})
+            Visuals_Camera:Slider({Flag = "VisualsCamera_FOVAmmount", Default = 90, Maximum = 120, Minimum = 1, Decimals = 1, Callback = Visuals.Refresh})
+            --
+            Visuals_FOV:Toggle({Name = Languages:GetTranslation("Aim Assist FOV Circle"), Flag = "VisualsFOV_AimAssist"}):Colorpicker({Info = "Aim Assist FOV Circle", Flag = "VisualsFOV_AimAssistColor1", Alpha = 0.65, Default = Color3.fromRGB(93, 62, 152)});Flags["VisualsFOV_AimAssist"]:Colorpicker({Info = "Aim Assist FOV Outline", Flag = "VisualsFOV_AimAssistColor2", Alpha = 0.6, Default = Color3.fromRGB(93, 62, 152)})
+            Visuals_FOV:Slider({Flag = "VisualsFOV_AimAssistSides", Default = 50, Maximum = 60, Minimum = 4, Decimals = 2})
+            Visuals_FOV:Toggle({Name = Languages:GetTranslation("Deadzone FOV Circle"), Flag = "VisualsFOV_Deadzone"}):Colorpicker({Info = "Deadzone FOV Circle", Flag = "VisualsFOV_DeadzoneColor1", Alpha = 0.65, Default = Color3.fromRGB(25, 25, 25)});Flags["VisualsFOV_Deadzone"]:Colorpicker({Info = "Deadzone FOV Outline", Flag = "VisualsFOV_DeadzoneColor2", Alpha = 0.6, Default = Color3.fromRGB(25, 25, 25)})
+            Visuals_FOV:Slider({Flag = "VisualsFOV_DeadzoneSides", Default = 50, Maximum = 60, Minimum = 4, Decimals = 2})
+            --
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Cursor"), Flag = "VisualsCursor_Cursor"}):Colorpicker({Info = "Cursor Color", Flag = "VisualsCursor_CursorColor", Default = Color3.fromRGB(155, 100, 200), Alpha = 0.25})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Dot"), Flag = "VisualsCursor_Dot"}):Colorpicker({Info = "Cursor Dot Color", Flag = "VisualsCursor_DotColor", Default = Color3.fromRGB(155, 100, 200), Alpha = 0})
+            Visuals_Cursor:Slider({Name = Languages:GetTranslation("Size"), Flag = "VisualsCursor_Size", Default = 15, Maximum = 25, Minimum = 1})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Dynamic Size"), Flag = "VisualsCursor_DynamicSize"})
+            Visuals_Cursor:Slider({Name = Languages:GetTranslation("Gap"), Flag = "VisualsCursor_Gap", Default = 8, Maximum = 15, Minimum = 0})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Spinning"), Flag = "VisualsCursor_Spinning"})
+            Visuals_Cursor:Slider({Flag = "VisualsCursor_SpinningAmmount", Default = 25, Maximum = 50, Minimum = 1, Decimals = 0.01})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Follow Mouse"), Flag = "VisualsCursor_FollowMouse", Default = true})
+            Visuals_Cursor:Slider({Name = Languages:GetTranslation("Thickness"), Flag = "VisualsCursor_Thickness", Default = 1, Maximum = 5, Minimum = 1, Decimals = 1})
+            Visuals_Cursor:Dropdown({Name = Languages:GetTranslation("Easing Style"), Flag = "VisualsCursor_EasingStyle", Options = {"Off", "Linear", "Cubic", "Quad", "Quart", "Quint", "Sine", "Exponential", "Back", "Bounce", "Elastic", "Circular"}})
+            --
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Velocity Graph"), Flag = "VisualsExtra_VelocityGraph"})
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Third Person"), Flag = "VisualsExtra_ThirdPerson"}):Keybind({Flag = "VisualsExtra_ThirdPersonKey", Default = Enum.KeyCode.T, KeybindName = Languages:GetTranslation("Third Person"), Mode = "Toggle"})
+            Visuals_Extra:Slider({Flag = "VisualsExtra_ThirdPersonAmmount", Default = 10, Maximum = 50, Minimum = 1, Decimals = 0.1})
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Freecam"), Flag = "VisualsExtra_Freecam"})
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Zoom"), Flag = "VisualsExtra_Zoom"}):Keybind({Flag = "VisualsExtra_ZoomKey", Default = Enum.KeyCode.Z, KeybindName = Languages:GetTranslation("Zoom"), Mode = "On Hold", Callback = Visuals.Refresh})
+            Visuals_Extra:Slider({Flag = "VisualsExtra_ZoomAmmount", Default = 35, Maximum = 40, Minimum = 1, Decimals = 1, Callback = Visuals.Refresh})
+        end
+        --
+        do -- Misc
+            local Misc_Client, Misc_Custom = Misc:MultiSection({Sections = {Languages:GetTranslation("Main"), Languages:GetTranslation("Custom")}, Size = 347})
+            local Misc_Movement = Misc:Section({Name = Languages:GetTranslation("Movement"), Side = "Right"})
+            local Misc_Extra = Misc:Section({Name = Languages:GetTranslation("Extra"), Fill = true, Side = "Right"})
+            local Misc_Chat = Misc:Section({Name = Languages:GetTranslation("Chat"), Fill = true})
+            --
+            Misc_Client:Toggle({Name = Languages:GetTranslation("Client Desync"), Flag = "MiscClient_Enabled"}):Keybind({Flag = "MiscClient_EnabledKey", Default = Enum.KeyCode.E, KeybindName = Languages:GetTranslation("Client Desync"), Mode = "Toggle", Callback = function(Key, State)
+                Desync.Enabled = State
+                --
+                if Atlanta:GetCharacter(Client) then
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
+                    --
+                    if RootPart then
+                        if Desync.Enabled then
+                            Atlanta.Locals.LastPosition = RootPart.CFrame
+                            --
+                            Desync.Fake.CFrame = RootPart.CFrame
+                            Desync.Fake.Velocity = RootPart.Velocity
+                            Desync.Fake.RotVelocity = RootPart.RotVelocity
+                        else
+                            if Desync.Real.CFrame and Desync.Real.Velocity and Desync.Real.RotVelocity then
+                                RootPart.Velocity = Vector3.new(0, 0, 0)
+                                RootPart.RotVelocity = Vector3.new(0, 0, 0)
+                                --
+                                RootPart.CFrame = Desync.Real.CFrame
+                                RootPart.Velocity = Desync.Real.Velocity
+                                RootPart.RotVelocity = Desync.Real.RotVelocity
+                            end
+                        end
+                    end
+                end
+            end})
+            Misc_Client:Slider({Name = Languages:GetTranslation("Speed"), Flag = "MiscClient_Speed", Default = 1, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Position Method"), Flag = "MiscClient_PositionMethod", Options = {"Off", "Head", "Under Floor", "In Air", "Floor Shift", "Air Shift", "Last Position", "Random", "Custom"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Turn Method"), Flag = "MiscClient_TurnMethod", Options = {"Off", "Rotate", "Backwards Shift", "Backwards", "Upside Down", "Laying", "Jitter", "Random", "Custom"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Turn Smoothing"), Flag = "MiscClient_TurnSmoothing", Options = {"Constant", "Reverse", "Inverse"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Easing Style"), Flag = "MiscClient_EasingStyle", Options = {"Off", "Linear", "Cubic", "Quad", "Quart", "Quint", "Sine", "Exponential", "Back", "Bounce", "Elastic", "Circular"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Easing Direction"), Flag = "MiscClient_EasingDirection", Options = {"In", "Out", "InOut"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Velocity Method"), Flag = "MiscClient_VelocityMethod", Options = {"Off", "StandBug", "Multiplier", "Reversed", "Up", "Down", "Left", "Right"}})
+            Misc_Client:Slider({Name = Languages:GetTranslation("Velocity Multiplier"), Flag = "MiscClient_VelocityMultiplier", Default = 1, Maximum = 100, Minimum = 0, Decimals = 0.01})
+            --Misc_Client:Label({Name = Languages:GetTranslation("Turn on Visualisation in Players,\nLocal Player to see the Desync.", Center = true})
+            --
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Speed"), Flag = "MiscMovement_Speed"}):Keybind({Flag = "MiscMovement_SpeedKey", Default = Enum.KeyCode.V, KeybindName = Languages:GetTranslation("Speed Hack"), Mode = "Toggle"})
+            Misc_Movement:Slider({Flag = "MiscMovement_SpeedNum", Ending = "s", Default = 25, Maximum = 200, Minimum = 1, Decimals = 1})
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Fly"), Flag = "MiscMovement_Fly"}):Keybind({Flag = "MiscMovement_FlyKey", Default = Enum.KeyCode.F, KeybindName = Languages:GetTranslation("Fly Hack"), Mode = "Toggle"})
+            Misc_Movement:Slider({Flag = "MiscMovement_FlyNum", Ending = "s", Default = 50, Maximum = 300, Minimum = 1, Decimals = 1})
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Bunnyhop"), Flag = "MiscMovement_Bunnyhop"}):Keybind({Flag = "MiscMovement_BunnyhopKey", Default = Enum.KeyCode.B, KeybindName = Languages:GetTranslation("Bunny Hop"), Mode = "Toggle"})
+            Misc_Movement:Dropdown({Name = Languages:GetTranslation("Bunnyhop Type"), Flag = "MiscMovement_BunnyhopType", Default = "Gradual", Options = {"Static", "Gradual"}})
+            Misc_Movement:Slider({Name = Languages:GetTranslation("Bunnyhop Velocity"), Flag = "MiscMovement_BunnyhopVelocity", Ending = "s", Default = 50, Maximum = 100, Minimum = 1, Decimals = 1})
+            Misc_Movement:Slider({Name = Languages:GetTranslation("Bunnyhop Gains"), Flag = "MiscMovement_BunnyhopGains", Ending = "v", Default = 1.5, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Jumpbug"), Flag = "MiscMovement_Jumpbug"}):Keybind({Flag = "MiscMovement_JumpbugKey", Default = Enum.KeyCode.J, KeybindName = Languages:GetTranslation("Jump Bug"), Mode = "On Hold"})
+            Misc_Movement:Slider({Name = Languages:GetTranslation("Jumpbug Delay"), Flag = "MiscMovement_JumpbugDelay", Ending = "ms", Default = 10, Maximum = 10, Minimum = 1, Decimals = 0.01})
+            --
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Click Teleport"), Flag = "MiscExtra_Click"}):Keybind({Flag = "MiscExtra_ClickKey", Default = Enum.KeyCode.LeftControl, KeybindName = Languages:GetTranslation("Click Teleport"), Mode = "On Hold"})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Noclip"), Flag = "MiscExtra_Noclip"}):Keybind({Flag = "MiscExtra_NoclipKey", Default = Enum.KeyCode.N, KeybindName = Languages:GetTranslation("Noclip"), Mode = "On Hold"})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Disable Networking"), Flag = "MiscExtra_DisableNetworking"}):Keybind({Flag = "MiscExtra_DisableNetworkingKey", Default = Enum.KeyCode.X, KeybindName = Languages:GetTranslation("Networking"), Mode = "Toggle"})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Fake Lag"), Flag = "MiscExtra_FakeLag"}):Keybind({Flag = "MiscExtra_FakeLagKey", Default = Enum.KeyCode.Minus, KeybindName = Languages:GetTranslation("Fake Lag"), Mode = "Toggle"})
+            Misc_Extra:Slider({Name = Languages:GetTranslation("Fake Lag Ammount"), Flag = "MiscExtra_FakeLagAmmount", Ending = "t", Default = 50, Maximum = 1000, Minimum = 1, Decimals = 1})
+            Misc_Extra:Slider({Name = Languages:GetTranslation("Fake Lag Multiplier"), Flag = "MiscExtra_FakeLagMultiplier", Ending = "t", Default = 1, Maximum = 20, Minimum = 0.1, Decimals = 0.001})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Return Desync"), Flag = "MiscExtra_Return"})
+            Misc_Extra:Dropdown({Name = Languages:GetTranslation("Return Type"), Flag = "MiscExtra_ReturnType", Default = "Flip", Options = {"Always", "Flip"}})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Lag Switch"), Flag = "MiscExtra_LagSwitch"}):Keybind({Flag = "MiscExtra_LagSwitchKey", Default = Enum.KeyCode.Equals, KeybindName = Languages:GetTranslation("Lag Switch"), Mode = "On Hold"})
+            Misc_Extra:Slider({Flag = "MiscExtra_LagSwitchAmmount", Ending = "rl", Default = 1, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            --
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Chat Spam"), Flag = "MiscChat_ChatSpam"})
+            Misc_Chat:Slider({Name = Languages:GetTranslation("Delay"), Flag = "MiscChat_Delay", Ending = "s", Default = 2.5, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            Misc_Chat:Dropdown({Name = Languages:GetTranslation("Chat Spam Type"), Flag = "MiscChat_Type", Default = "Atlanta", Options = {"Atlanta", "Troll", "Toxic", "Fulcrum", "Custom", "Song"}})
+            Misc_Chat:TextBox({Flag = "MiscChat_Song", Max = 50, PlaceHolder = Languages:GetTranslation("Song Name"), Callback = function(Text, Enter) if Enter then Chat:GenerateSong(Text) end end})
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Multiple"), Flag = "MiscChat_Multiple", Default = true})
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Emojis"), Flag = "MiscChat_Emojis", Default = true})
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Symbols"), Flag = "MiscChat_Symbols", Default = true})
+        end
+        --
+        do -- Settings
+            local Settings_PlayerList = Settings:PlayerList({})
+            local Settings_Main = Settings:Section({Name = Languages:GetTranslation("Main"), Fill = true})
+            local Settings_Extra = Settings:Section({Name = Languages:GetTranslation("Extra"), Fill = true, Side = "Right"})
+            --
+            Settings_Main:Toggle({Name = Languages:GetTranslation("Deatmatch Mode"), Flag = "SettingsMain_Deathmatch"})
+            --
+            Settings_Extra:Label({Name = Languages:GetTranslation("Server ID")})
+            Settings_Extra:TextBox({Default = game.JobId, Max = 200, Reactive = false, PlaceHolder = "Server ID"})
+            Settings_Extra:Button({Name = Languages:GetTranslation("Rejoin Server"), Callback = Atlanta.Rejoin})
+        end
         --
         do -- Config
             local Config_Menu = Config:Section({Name = Languages:GetTranslation("Menu")})
