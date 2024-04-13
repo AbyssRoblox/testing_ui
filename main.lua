@@ -344,7 +344,7 @@ local NfcNormalize, NfdNormalize, CharPattern, CodePoint, Graphemes, Offset, Cod
 local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = coroutine.isyieldable, coroutine.running, coroutine.status, coroutine.create, coroutine.resume, coroutine.close, coroutine.yield, coroutine.wrap
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
-local CreateRenderObject = GetUpvalue(Drawing.new, 1)
+local CreateRenderObject = Drawing.new
 local DestroyRenderObject = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 3)
 local SetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__newindex, 4)
 local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 4)
