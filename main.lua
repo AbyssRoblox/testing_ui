@@ -71,7 +71,7 @@ do -- Folders
     end
 end
 -- // Tables
-local Library, Utility, Flags, Theme = loadfile("Atlanta/Library.lua")
+local Library, Utility, Flags, Theme = loadfile("Atlanta/Library.lua")()
 --
 local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Tween, Chat, Languages, Atlanta = {
     Default = {1, [[{"Outline":"000000","Accent":"5d3e98","LightText":"ffffff","DarkText":"afafaf","LightContrast":"1e1e1e","CursorOutline":"0a0a0a","DarkContrast":"141414","TextBorder":"000000","Inline":"323232"}]]},
@@ -343,6 +343,7 @@ local NfcNormalize, NfdNormalize, CharPattern, CodePoint, Graphemes, Offset, Cod
 local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = coroutine.isyieldable, coroutine.running, coroutine.status, coroutine.create, coroutine.resume, coroutine.close, coroutine.yield, coroutine.wrap
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
+
 local SetRenderProperty = setrenderproperty
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
@@ -3203,7 +3204,44 @@ do -- UI
     local Config = Window:Page({Name = Languages:GetTranslation("Configs")})
     --
     do -- // Content
-       
+        do -- Legit
+            local Legit_AimAssist = Legit:Section({Name = Languages:GetTranslation("Aim Assist"), Fill = true})
+            local Legit_Triggerbot = Legit:Section({Name = Languages:GetTranslation("Trigger Bot"), Side = "Right"})
+            local Legit_Misc = Legit:Section({Name = Languages:GetTranslation("Misc"), Fill = true, Side = "Right"})
+            --
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Enabled"), Flag = "LegitAimAssist_Enabled"}):Keybind({Flag = "LegitAimAssist_EnabledKey", Default = Enum.KeyCode.E, KeybindName = Languages:GetTranslation("Aim Assist"), Mode = "On Hold"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Field Of View"), Flag = "LegitAimAssist_FieldOfView", Default = 12.5, Minimum = 0.5, Maximum = 100.5, Decimals = 0.01, Disable = {"Disabled", 1, 100}, Ending = "%"})
+            Legit_AimAssist:Dropdown({Flag = "LegitAimAssist_FOVType", Options = {"Static", "Dynamic"}, Default = "Static"})
+            Legit_AimAssist:Slider({Flag = "LegitAimAssist_Dynamic", Default = 25, Maximum = 100, Minimum = 1, Decimals = 0.01})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Horizontal Smoothing"), Flag = "LegitAimAssist_HorizontalSmoothing", Default = 12.5, Minimum = 1, Maximum = 100, Decimals = 0.01, Ending = "%"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Vertical Smoothing"), Flag = "LegitAimAssist_VerticalSmoothing", Default = 5, Minimum = 1, Maximum = 100, Decimals = 0.01, Ending = "%"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Dynamic Smoothing"), Flag = "LegitAimAssist_DynamicSmoothing", Default = 100.5, Maximum = 100.5, Minimum = 0.01, Decimals = 0.01, Disable = {"Disabled", 0.5, 100}})
+            Legit_AimAssist:Multibox({Name = Languages:GetTranslation("Aim Assist Checks"), Flag = "LegitAimAssist_Checks", Options = {"Team Check", "Wall Check", "Visible Check", "Forcefield Check", "Alive Check"}, Default = {"Team Check", "Wall Check", "Alive Check"}})
+            Legit_AimAssist:Multibox({Name = Languages:GetTranslation("Hit Boxes"), Flag = "LegitAimAssist_Hitbox", Options = {"Head", "Torso", "Arms", "Legs"}, Default = {"Head", "Torso"}, Minimum = 1})
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Randomise Hitbox Position"), Flag = "LegitAimAssist_RandomiseHitbox", Default = false})
+            Legit_AimAssist:Dropdown({Name = Languages:GetTranslation("Hitscan Type"), Flag = "LegitAimAssist_HitscanType", Options = {"Mouse", "Distance", "Health"}, Default = "Mouse"})
+            Legit_AimAssist:Dropdown({Name = Languages:GetTranslation("Wall Check Origin"), Flag = "LegitAimAssist_WallCheckOrigin", Options = {"Camera", "Head", "Torso"}, Default = "Camera"})
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Readjustment"), Flag = "LegitAimAssist_Readjustment"}):Keybind({Flag = "LegitAimAssist_ReadjustmentKey", Default = Enum.UserInputType.MouseButton2, KeybindName = Languages:GetTranslation("AB Readjustment"), Mode = "On Hold"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Deadzone"), Flag = "LegitAimAssist_Deadzone", Default = 100.5, Minimum = 0.5, Maximum = 100.5, Decimals = 0.01, Disable = {"Disabled", 1, 100}, Ending = "%"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Stutter"), Flag = "LegitAimAssist_Stutter", Default = 25, Maximum = 100.5, Minimum = 0.1, Decimals = 0.01, Disable = {"Disabled", 0.5, 100}, Ending = "t"})
+            Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Humaniser"), Flag = "LegitAimAssist_Humaniser"})
+            Legit_AimAssist:Slider({Name = Languages:GetTranslation("Humaniser Scale"), Flag = "LegitAimAssist_HumaniserScale", Default = 50, Maximum = 100.5, Minimum = 0.1, Decimals = 0.01, Disable = {"Disabled", 0.5, 100}, Ending = "t"})
+            --
+            Legit_Triggerbot:Toggle({Name = Languages:GetTranslation("Enabled"), Flag = "LegitTriggerbot_Enabled"}):Keybind({Flag = "LegitTriggerbot_EnabledKey", Default = "None", KeybindName = Languages:GetTranslation("Trigger Bot"), Mode = "Always"})
+            Legit_Triggerbot:Slider({Name = Languages:GetTranslation("Delay"), Flag = "LegitTriggerbot_Delay", Default = 12.5, Minimum = 0.5, Maximum = 500.5, Decimals = 1, Disable = {"Disabled", 1, 500}, Ending = "ms"})
+            Legit_Triggerbot:Slider({Name = Languages:GetTranslation("Interval"), Flag = "LegitTriggerbot_Interval", Default = 75, Minimum = 0.5, Maximum = 1000, Decimals = 1, Disable = {"Disabled", 1, 1000}, Ending = "ms"})
+            Legit_Triggerbot:Multibox({Name = Languages:GetTranslation("Trigger Bot Checks"), Flag = "LegitTriggerbot_Checks", Options = {"Team Check", "Wall Check", "Visible Check", "Forcefield Check", "Alive Check"}, Default = {"Team Check", "Wall Check", "Visible Check", "Alive Check"}})
+            Legit_Triggerbot:Multibox({Name = Languages:GetTranslation("Hit Boxes"), Flag = "LegitTriggerbot_Hitbox", Options = {"Head", "Torso", "Arms", "Legs"}, Default = {"Head", "Torso"}, Minimum = 1})
+            Legit_Triggerbot:Dropdown({Name = Languages:GetTranslation("Wall Check Origin"), Flag = "LegitTriggerbot_WallCheckOrigin", Options = {"Camera", "Head", "Torso"}, Default = "Camera"})
+            Legit_Triggerbot:Toggle({Name = Languages:GetTranslation("Readjustment"), Flag = "LegitTriggerbot_Readjustment"}):Keybind({Flag = "LegitTriggerbot_Readjustment", Default = Enum.UserInputType.MouseButton2, KeybindName = Languages:GetTranslation("TB Readjustment"), Mode = "On Hold"})
+            --
+            Legit_Misc:Toggle({Name = Languages:GetTranslation("Cursor Offset"), Flag = "LegitMisc_CursorOffset"})
+            Legit_Misc:Slider({Flag = "LegitMisc_CursorOffsetX", Default = 0, Minimum = -100, Maximum = 100, Ending = "px"})
+            Legit_Misc:Slider({Flag = "LegitMisc_CursorOffsetY", Default = 0, Minimum = -100, Maximum = 100, Ending = "px"})
+        end
+        --
+        do -- Rage
+        end
         --
         do -- Players
             local Players_Enemies, Players_Friendlies, Players_Local = Players2:MultiSection({Sections = {Languages:GetTranslation("Enemies"), Languages:GetTranslation("Friendlies"), Languages:GetTranslation("Local")}, Fill = true, Callback = function(Section)
@@ -3260,7 +3298,124 @@ do -- UI
             Players_Extra:Dropdown({Name = Languages:GetTranslation("Distance Measurement"), Flag = "PlayersExtra_DistanceMeasurement", Max = 8, Options = {"Studs", "Meters", "Centimeters", "Kilometers", "Millimeters", "Micrometers", "Inches", "Miles", "Nautical Miles", "Yards", "Feet"}})
         end
         --
-       
+        do -- Visuals
+            local Visuals_Lighting = Visuals2:Section({Name = Languages:GetTranslation("Lighting")})
+            local Visuals_Camera = Visuals2:Section({Name = Languages:GetTranslation("Camera"), Side = "Right"})
+            local Visuals_FOV, Visuals_Cursor = Visuals2:MultiSection({Sections = {Languages:GetTranslation("Field Of View"), Languages:GetTranslation("Cursor")}, Fill = true, Side = "Right"})
+            local Visuals_Extra = Visuals2:Section({Name = Languages:GetTranslation("Extra"), Fill = true})
+            --
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Ambient"), Flag = "VisualsLighting_Ambient", Callback = Visuals.Refresh}):Colorpicker({Info = "Ambient", Flag = "VisualsLighting_AmbientColor1", Default = Color3.fromRGB(155, 100, 200), Callback = Visuals.Refresh});Flags["VisualsLighting_Ambient"]:Colorpicker({Info = "Outdoor Ambient", Flag = "VisualsLighting_AmbientColor2", Default = Color3.fromRGB(100, 200, 155), Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Brightness"), Flag = "VisualsLighting_Brightness", Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Flag = "VisualsLighting_BrightnessAmmount", Default = 3, Maximum = 25, Minimum = 0, Decimals = 0.1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Clock Time"), Flag = "VisualsLighting_ClockTime", Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Flag = "VisualsLighting_ClockTimeAmmount", Ending = "hr", Default = 2, Maximum = 24, Minimum = 0, Decimals = 0.1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Color Shift"), Flag = "VisualsLighting_ColorShift", Callback = Visuals.Refresh}):Colorpicker({Info = "Color Shift Bottom", Flag = "VisualsLighting_ColorShiftColor1", Default = Color3.fromRGB(65, 155, 155), Callback = Visuals.Refresh});Flags["VisualsLighting_ColorShift"]:Colorpicker({Info = "Color Shift Top", Flag = "VisualsLighting_ColorShiftColor2", Default = Color3.fromRGB(155, 65, 155), Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Exposure"), Flag = "VisualsLighting_Exposure", Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Flag = "VisualsLighting_ExposureAmmount", Default = 1, Maximum = 8, Minimum = -8, Decimals = 0.1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Toggle({Name = Languages:GetTranslation("Fog"), Flag = "VisualsLighting_Fog", Callback = Visuals.Refresh}):Colorpicker({Info = "Fog Color", Flag = "VisualsLighting_FogColor", Default = Color3.fromRGB(200, 150, 225), Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Name = Languages:GetTranslation("Fog End"), Flag = "VisualsLighting_FogEnd", Default = 350, Maximum = 5000, Minimum = 0, Decimals = 1, Callback = Visuals.Refresh})
+            Visuals_Lighting:Slider({Name = Languages:GetTranslation("Fog Start"), Flag = "VisualsLighting_FogStart", Default = 35, Maximum = 5000, Minimum = 0, Decimals = 1, Callback = Visuals.Refresh})
+            --
+            Visuals_Camera:Toggle({Name = Languages:GetTranslation("Field Of View "), Flag = "VisualsCamera_FOV", Callback = Visuals.Refresh})
+            Visuals_Camera:Slider({Flag = "VisualsCamera_FOVAmmount", Default = 90, Maximum = 120, Minimum = 1, Decimals = 1, Callback = Visuals.Refresh})
+            --
+            Visuals_FOV:Toggle({Name = Languages:GetTranslation("Aim Assist FOV Circle"), Flag = "VisualsFOV_AimAssist"}):Colorpicker({Info = "Aim Assist FOV Circle", Flag = "VisualsFOV_AimAssistColor1", Alpha = 0.65, Default = Color3.fromRGB(93, 62, 152)});Flags["VisualsFOV_AimAssist"]:Colorpicker({Info = "Aim Assist FOV Outline", Flag = "VisualsFOV_AimAssistColor2", Alpha = 0.6, Default = Color3.fromRGB(93, 62, 152)})
+            Visuals_FOV:Slider({Flag = "VisualsFOV_AimAssistSides", Default = 50, Maximum = 60, Minimum = 4, Decimals = 2})
+            Visuals_FOV:Toggle({Name = Languages:GetTranslation("Deadzone FOV Circle"), Flag = "VisualsFOV_Deadzone"}):Colorpicker({Info = "Deadzone FOV Circle", Flag = "VisualsFOV_DeadzoneColor1", Alpha = 0.65, Default = Color3.fromRGB(25, 25, 25)});Flags["VisualsFOV_Deadzone"]:Colorpicker({Info = "Deadzone FOV Outline", Flag = "VisualsFOV_DeadzoneColor2", Alpha = 0.6, Default = Color3.fromRGB(25, 25, 25)})
+            Visuals_FOV:Slider({Flag = "VisualsFOV_DeadzoneSides", Default = 50, Maximum = 60, Minimum = 4, Decimals = 2})
+            --
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Cursor"), Flag = "VisualsCursor_Cursor"}):Colorpicker({Info = "Cursor Color", Flag = "VisualsCursor_CursorColor", Default = Color3.fromRGB(155, 100, 200), Alpha = 0.25})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Dot"), Flag = "VisualsCursor_Dot"}):Colorpicker({Info = "Cursor Dot Color", Flag = "VisualsCursor_DotColor", Default = Color3.fromRGB(155, 100, 200), Alpha = 0})
+            Visuals_Cursor:Slider({Name = Languages:GetTranslation("Size"), Flag = "VisualsCursor_Size", Default = 15, Maximum = 25, Minimum = 1})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Dynamic Size"), Flag = "VisualsCursor_DynamicSize"})
+            Visuals_Cursor:Slider({Name = Languages:GetTranslation("Gap"), Flag = "VisualsCursor_Gap", Default = 8, Maximum = 15, Minimum = 0})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Spinning"), Flag = "VisualsCursor_Spinning"})
+            Visuals_Cursor:Slider({Flag = "VisualsCursor_SpinningAmmount", Default = 25, Maximum = 50, Minimum = 1, Decimals = 0.01})
+            Visuals_Cursor:Toggle({Name = Languages:GetTranslation("Follow Mouse"), Flag = "VisualsCursor_FollowMouse", Default = true})
+            Visuals_Cursor:Slider({Name = Languages:GetTranslation("Thickness"), Flag = "VisualsCursor_Thickness", Default = 1, Maximum = 5, Minimum = 1, Decimals = 1})
+            Visuals_Cursor:Dropdown({Name = Languages:GetTranslation("Easing Style"), Flag = "VisualsCursor_EasingStyle", Options = {"Off", "Linear", "Cubic", "Quad", "Quart", "Quint", "Sine", "Exponential", "Back", "Bounce", "Elastic", "Circular"}})
+            --
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Velocity Graph"), Flag = "VisualsExtra_VelocityGraph"})
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Third Person"), Flag = "VisualsExtra_ThirdPerson"}):Keybind({Flag = "VisualsExtra_ThirdPersonKey", Default = Enum.KeyCode.T, KeybindName = Languages:GetTranslation("Third Person"), Mode = "Toggle"})
+            Visuals_Extra:Slider({Flag = "VisualsExtra_ThirdPersonAmmount", Default = 10, Maximum = 50, Minimum = 1, Decimals = 0.1})
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Freecam"), Flag = "VisualsExtra_Freecam"})
+            Visuals_Extra:Toggle({Name = Languages:GetTranslation("Zoom"), Flag = "VisualsExtra_Zoom"}):Keybind({Flag = "VisualsExtra_ZoomKey", Default = Enum.KeyCode.Z, KeybindName = Languages:GetTranslation("Zoom"), Mode = "On Hold", Callback = Visuals.Refresh})
+            Visuals_Extra:Slider({Flag = "VisualsExtra_ZoomAmmount", Default = 35, Maximum = 40, Minimum = 1, Decimals = 1, Callback = Visuals.Refresh})
+        end
+        --
+        do -- Misc
+            local Misc_Client, Misc_Custom = Misc:MultiSection({Sections = {Languages:GetTranslation("Main"), Languages:GetTranslation("Custom")}, Size = 347})
+            local Misc_Movement = Misc:Section({Name = Languages:GetTranslation("Movement"), Side = "Right"})
+            local Misc_Extra = Misc:Section({Name = Languages:GetTranslation("Extra"), Fill = true, Side = "Right"})
+            local Misc_Chat = Misc:Section({Name = Languages:GetTranslation("Chat"), Fill = true})
+            --
+            Misc_Client:Toggle({Name = Languages:GetTranslation("Client Desync"), Flag = "MiscClient_Enabled"}):Keybind({Flag = "MiscClient_EnabledKey", Default = Enum.KeyCode.E, KeybindName = Languages:GetTranslation("Client Desync"), Mode = "Toggle", Callback = function(Key, State)
+                Desync.Enabled = State
+                --
+                if Atlanta:GetCharacter(Client) then
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
+                    --
+                    if RootPart then
+                        if Desync.Enabled then
+                            Atlanta.Locals.LastPosition = RootPart.CFrame
+                            --
+                            Desync.Fake.CFrame = RootPart.CFrame
+                            Desync.Fake.Velocity = RootPart.Velocity
+                            Desync.Fake.RotVelocity = RootPart.RotVelocity
+                        else
+                            if Desync.Real.CFrame and Desync.Real.Velocity and Desync.Real.RotVelocity then
+                                RootPart.Velocity = Vector3.new(0, 0, 0)
+                                RootPart.RotVelocity = Vector3.new(0, 0, 0)
+                                --
+                                RootPart.CFrame = Desync.Real.CFrame
+                                RootPart.Velocity = Desync.Real.Velocity
+                                RootPart.RotVelocity = Desync.Real.RotVelocity
+                            end
+                        end
+                    end
+                end
+            end})
+            Misc_Client:Slider({Name = Languages:GetTranslation("Speed"), Flag = "MiscClient_Speed", Default = 1, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Position Method"), Flag = "MiscClient_PositionMethod", Options = {"Off", "Head", "Under Floor", "In Air", "Floor Shift", "Air Shift", "Last Position", "Random", "Custom"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Turn Method"), Flag = "MiscClient_TurnMethod", Options = {"Off", "Rotate", "Backwards Shift", "Backwards", "Upside Down", "Laying", "Jitter", "Random", "Custom"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Turn Smoothing"), Flag = "MiscClient_TurnSmoothing", Options = {"Constant", "Reverse", "Inverse"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Easing Style"), Flag = "MiscClient_EasingStyle", Options = {"Off", "Linear", "Cubic", "Quad", "Quart", "Quint", "Sine", "Exponential", "Back", "Bounce", "Elastic", "Circular"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Easing Direction"), Flag = "MiscClient_EasingDirection", Options = {"In", "Out", "InOut"}})
+            Misc_Client:Dropdown({Name = Languages:GetTranslation("Velocity Method"), Flag = "MiscClient_VelocityMethod", Options = {"Off", "StandBug", "Multiplier", "Reversed", "Up", "Down", "Left", "Right"}})
+            Misc_Client:Slider({Name = Languages:GetTranslation("Velocity Multiplier"), Flag = "MiscClient_VelocityMultiplier", Default = 1, Maximum = 100, Minimum = 0, Decimals = 0.01})
+            --Misc_Client:Label({Name = Languages:GetTranslation("Turn on Visualisation in Players,\nLocal Player to see the Desync.", Center = true})
+            --
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Speed"), Flag = "MiscMovement_Speed"}):Keybind({Flag = "MiscMovement_SpeedKey", Default = Enum.KeyCode.V, KeybindName = Languages:GetTranslation("Speed Hack"), Mode = "Toggle"})
+            Misc_Movement:Slider({Flag = "MiscMovement_SpeedNum", Ending = "s", Default = 25, Maximum = 200, Minimum = 1, Decimals = 1})
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Fly"), Flag = "MiscMovement_Fly"}):Keybind({Flag = "MiscMovement_FlyKey", Default = Enum.KeyCode.F, KeybindName = Languages:GetTranslation("Fly Hack"), Mode = "Toggle"})
+            Misc_Movement:Slider({Flag = "MiscMovement_FlyNum", Ending = "s", Default = 50, Maximum = 300, Minimum = 1, Decimals = 1})
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Bunnyhop"), Flag = "MiscMovement_Bunnyhop"}):Keybind({Flag = "MiscMovement_BunnyhopKey", Default = Enum.KeyCode.B, KeybindName = Languages:GetTranslation("Bunny Hop"), Mode = "Toggle"})
+            Misc_Movement:Dropdown({Name = Languages:GetTranslation("Bunnyhop Type"), Flag = "MiscMovement_BunnyhopType", Default = "Gradual", Options = {"Static", "Gradual"}})
+            Misc_Movement:Slider({Name = Languages:GetTranslation("Bunnyhop Velocity"), Flag = "MiscMovement_BunnyhopVelocity", Ending = "s", Default = 50, Maximum = 100, Minimum = 1, Decimals = 1})
+            Misc_Movement:Slider({Name = Languages:GetTranslation("Bunnyhop Gains"), Flag = "MiscMovement_BunnyhopGains", Ending = "v", Default = 1.5, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            Misc_Movement:Toggle({Name = Languages:GetTranslation("Jumpbug"), Flag = "MiscMovement_Jumpbug"}):Keybind({Flag = "MiscMovement_JumpbugKey", Default = Enum.KeyCode.J, KeybindName = Languages:GetTranslation("Jump Bug"), Mode = "On Hold"})
+            Misc_Movement:Slider({Name = Languages:GetTranslation("Jumpbug Delay"), Flag = "MiscMovement_JumpbugDelay", Ending = "ms", Default = 10, Maximum = 10, Minimum = 1, Decimals = 0.01})
+            --
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Click Teleport"), Flag = "MiscExtra_Click"}):Keybind({Flag = "MiscExtra_ClickKey", Default = Enum.KeyCode.LeftControl, KeybindName = Languages:GetTranslation("Click Teleport"), Mode = "On Hold"})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Noclip"), Flag = "MiscExtra_Noclip"}):Keybind({Flag = "MiscExtra_NoclipKey", Default = Enum.KeyCode.N, KeybindName = Languages:GetTranslation("Noclip"), Mode = "On Hold"})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Disable Networking"), Flag = "MiscExtra_DisableNetworking"}):Keybind({Flag = "MiscExtra_DisableNetworkingKey", Default = Enum.KeyCode.X, KeybindName = Languages:GetTranslation("Networking"), Mode = "Toggle"})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Fake Lag"), Flag = "MiscExtra_FakeLag"}):Keybind({Flag = "MiscExtra_FakeLagKey", Default = Enum.KeyCode.Minus, KeybindName = Languages:GetTranslation("Fake Lag"), Mode = "Toggle"})
+            Misc_Extra:Slider({Name = Languages:GetTranslation("Fake Lag Ammount"), Flag = "MiscExtra_FakeLagAmmount", Ending = "t", Default = 50, Maximum = 1000, Minimum = 1, Decimals = 1})
+            Misc_Extra:Slider({Name = Languages:GetTranslation("Fake Lag Multiplier"), Flag = "MiscExtra_FakeLagMultiplier", Ending = "t", Default = 1, Maximum = 20, Minimum = 0.1, Decimals = 0.001})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Return Desync"), Flag = "MiscExtra_Return"})
+            Misc_Extra:Dropdown({Name = Languages:GetTranslation("Return Type"), Flag = "MiscExtra_ReturnType", Default = "Flip", Options = {"Always", "Flip"}})
+            Misc_Extra:Toggle({Name = Languages:GetTranslation("Lag Switch"), Flag = "MiscExtra_LagSwitch"}):Keybind({Flag = "MiscExtra_LagSwitchKey", Default = Enum.KeyCode.Equals, KeybindName = Languages:GetTranslation("Lag Switch"), Mode = "On Hold"})
+            Misc_Extra:Slider({Flag = "MiscExtra_LagSwitchAmmount", Ending = "rl", Default = 1, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            --
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Chat Spam"), Flag = "MiscChat_ChatSpam"})
+            Misc_Chat:Slider({Name = Languages:GetTranslation("Delay"), Flag = "MiscChat_Delay", Ending = "s", Default = 2.5, Maximum = 10, Minimum = 0.1, Decimals = 0.01})
+            Misc_Chat:Dropdown({Name = Languages:GetTranslation("Chat Spam Type"), Flag = "MiscChat_Type", Default = "Atlanta", Options = {"Atlanta", "Troll", "Toxic", "Fulcrum", "Custom", "Song"}})
+            Misc_Chat:TextBox({Flag = "MiscChat_Song", Max = 50, PlaceHolder = Languages:GetTranslation("Song Name"), Callback = function(Text, Enter) if Enter then Chat:GenerateSong(Text) end end})
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Multiple"), Flag = "MiscChat_Multiple", Default = true})
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Emojis"), Flag = "MiscChat_Emojis", Default = true})
+            Misc_Chat:Toggle({Name = Languages:GetTranslation("Symbols"), Flag = "MiscChat_Symbols", Default = true})
+        end
+        --
         do -- Settings
             local Settings_PlayerList = Settings:PlayerList({})
             local Settings_Main = Settings:Section({Name = Languages:GetTranslation("Main"), Fill = true})
@@ -3326,7 +3481,344 @@ do -- UI
         end
     end
     --
-    
+    do -- // Main
+        do -- Connections
+            RunService:BindToRenderStep("Desync", Enum.RenderPriority.First.Value, function()
+                if Desync.Enabled then
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
+                    local Head = (Object and Object:FindFirstChild("Head"))
+                    --
+                    if RootPart and Head then
+                        local PositionMethod = Flags["MiscClient_PositionMethod"]:Get()
+                        local TurnMethod = Flags["MiscClient_TurnMethod"]:Get()
+                        local TurnSmoothing = Flags["MiscClient_TurnSmoothing"]:Get()
+                        local EasingStyle = Flags["MiscClient_EasingStyle"]:Get()
+                        local EasingDirection = Flags["MiscClient_EasingDirection"]:Get()
+                        local VelocityMethod = Flags["MiscClient_VelocityMethod"]:Get()
+                        local VelocityMultiplier = Flags["MiscClient_VelocityMultiplier"]:Get()
+                        --
+                        Desync.SmoothValue = Desync.SmoothValue + ((TurnMethod == "Rotate" and 0.0025 or 0.005) * Flags["MiscClient_Speed"]:Get())
+                        local Smoothened = (EasingStyle ~= "Off" and Math:Shift(Desync.SmoothValue) or (TurnSmoothing == "Constant" and Desync.SmoothValue or TurnSmoothing == "Reverse" and -Desync.SmoothValue or Math:Shift(Desync.SmoothValue)))
+                        --
+                        if TurnMethod == "Rotate" and Floor(Desync.SmoothValue * Desync.Rotate.X) > Desync.Rotate.X then
+                            Window.statuslist:Add("Calculating Desync Rotation")
+                            Desync.SmoothValue = 0
+                            Smoothened = 0
+                            --
+                            Desync.Rotate2 = (Desync.Rotate2 + Desync.Rotate)
+                            --
+                            Desync.Rotate = Vector3.new(Random(150, 1600), Random(2, 600) / 2, Random(150, 1600))
+                            --
+                            Delay(0.5, function()
+                                Window.statuslist:Remove("Calculating Desync Rotation")
+                            end)
+                        end
+                        --
+                        if EasingStyle ~= "Off" then
+                            Smoothened = TurnSmoothing == "Reverse" and -Tween.EasingStyles[Enum.EasingStyle[EasingStyle]][Enum.EasingDirection[EasingDirection]](Smoothened) or Tween.EasingStyles[Enum.EasingStyle[EasingStyle]][Enum.EasingDirection[EasingDirection]](Smoothened)
+                        end
+                        --
+                        if Desync.Sent.Position ~= RootPart.CFrame.Position then
+                            Desync.Real.CFrame = RootPart.CFrame
+                        end
+                        --
+                        RootPart.CFrame = Desync.Real.CFrame or RootPart.CFrame
+                        RootPart.Velocity = Desync.Real.Velocity or RootPart.Velocity
+                        RootPart.RotVelocity = Desync.Real.RotVelocity or RootPart.RotVelocity
+                        --
+                        local Length, Height, Width = Desync.Real.CFrame:ToOrientation()
+                        --
+                        local Position
+                        local Turn
+                        ---(Head and (RootPart.Size.Y + (Head.Size.Y * 3)) or 5)
+                        if PositionMethod == "Head" then
+                            Position = Desync.Real.CFrame.Position + Vector3.new(0, Head and (RootPart.Size.Y + (Head.Size.Y * 3)) or 5, 0)
+                        elseif PositionMethod == "Under Floor" then
+                            Position = Desync.Real.CFrame.Position + Vector3.new(0, -4, 0)
+                        elseif PositionMethod == "In Air" then
+                            Position = Desync.Real.CFrame.Position + Vector3.new(0, ((Head and (RootPart.Size.Y + (Head.Size.Y * 3)) or 5) + 5), 0)
+                        elseif PositionMethod == "Floor Shift" then
+                            Position = Desync.Real.CFrame.Position + Vector3.new(0, -((Head and (RootPart.Size.Y + (Head.Size.Y * 3)) or 5) * Math:Shift(Smoothened)), 0)
+                        elseif PositionMethod == "Air Shift" then
+                            Position = Desync.Real.CFrame.Position + Vector3.new(0, (((Head and (RootPart.Size.Y + (Head.Size.Y * 3)) or 5) * 2) * Math:Shift(Smoothened)), 0)
+                        elseif PositionMethod == "Last Position" then
+                            Position = Atlanta.Locals.LastPosition.Position
+                        elseif PositionMethod == "Random" then
+                            local Smoothened2 = Math:Shift(Smoothened)
+                            --
+                            Position = Desync.Real.CFrame.Position + Vector3.new(Random(-10, 10) , Random(-10, 10), Random(-10, 10))
+                        else
+                            Position = Desync.Real.CFrame.Position
+                        end
+                        --
+                        if TurnMethod == "Rotate" then
+                            Turn = CFrame.Angles(Length + Rad((Smoothened * Desync.Rotate.X) + Desync.Rotate2.X), Height + Rad((Smoothened * Desync.Rotate.Y) + Desync.Rotate2.Y), Width + Rad((Smoothened * Desync.Rotate.Z) + Desync.Rotate2.Z))
+                        elseif TurnMethod == "Backwards Shift" then
+                            Turn = CFrame.Angles(Length, Height - Rad(Math:Shift(Smoothened) * 180), Width)
+                        elseif TurnMethod == "Backwards" then
+                            Turn = CFrame.Angles(Length, Height - Rad(180), Width)
+                        elseif TurnMethod == "Upside Down" then
+                            Position = Position - Vector3.new(0, Head and Head.Size.Y or 1, 0)
+                            Turn = CFrame.Angles(Length, Height, Rad(180))
+                        elseif TurnMethod == "Laying" then
+                            Position = Position + Vector3.new(0, -(RootPart.Size.Y + ((Head and Head.Size.Y or 1) * 0.5)), 0)
+                            Turn = CFrame.Angles(Rad(90), 0, -Height)
+                        elseif TurnMethod == "Random" then
+                            Turn = CFrame.Angles(Length + Rad(Random(-360, 360)), Height + Rad(Random(-360, 360)), Width + Rad(Random(-360, 360)))
+                        elseif TurnMethod == "Jitter" then
+                            Turn = CFrame.Angles(Length + Rad(Random(-3, 3)), Height + Rad(Random(-3, 3)), Width + Rad(Random(-3, 3)))
+                        else
+                            Turn = CFrame.Angles(Length, Height, Width)
+                        end
+                        --
+                        Desync.Fake.CFrame = CFrame.new(Position) * Turn
+                        --
+                        if VelocityMethod == "StandBug" then
+                            Desync.Fake.Velocity = Vector3.new(9999999999999, -9999999999999, 9999999999999)
+                            Desync.Fake.RotVelocity = Vector3.new(9999999999999, -9999999999999, 9999999999999)
+                        elseif VelocityMethod == "Reversed" then
+                            Desync.Fake.Velocity = -Desync.Real.Velocity
+                            Desync.Fake.RotVelocity = -Desync.Real.RotVelocity
+                        elseif VelocityMethod == "Up" then
+                            Desync.Fake.Velocity = Vector3.new(0, 3000, 0)
+                            Desync.Fake.RotVelocity = Vector3.new(0, 3000, 0)
+                        elseif VelocityMethod == "Down" then
+                            Desync.Fake.Velocity = Vector3.new(0, -3000, 0)
+                            Desync.Fake.RotVelocity = Vector3.new(0, -3000, 0)
+                        elseif VelocityMethod == "Left" then
+                            Desync.Fake.Velocity = Vector3.new(3000, 0, 0)
+                            Desync.Fake.RotVelocity = Vector3.new(3000, 0, 0)
+                        elseif VelocityMethod == "Right" then
+                            Desync.Fake.Velocity = Vector3.new(0, 0, 3000)
+                            Desync.Fake.RotVelocity = Vector3.new(0, 0, 3000)
+                        else
+                            Desync.Fake.Velocity = Desync.Real.Velocity
+                            Desync.Fake.RotVelocity = Desync.Real.RotVelocity
+                        end
+                        --
+                        if VelocityMethod ~= "StandBug" and VelocityMethod ~= "Off" then
+                            Desync.Fake.Velocity = Desync.Fake.Velocity * VelocityMultiplier
+                            Desync.Fake.RotVelocity = Desync.Fake.RotVelocity * VelocityMultiplier
+                        end
+                    end 
+                end
+                --
+                if Flags["MiscExtra_LagSwitch"]:Get() then
+                    Network.IncomingReplicationLag = Flags["MiscExtra_LagSwitchAmmount"]:Get()
+                else
+                    Network.IncomingReplicationLag = 0
+                end
+            end)
+            --
+            Utility:Connection(UserInputService.InputBegan, function(Input)
+                if Input.UserInputType == Enum.UserInputType.MouseButton1 and Flags["MiscExtra_ClickKey"]:Active() then
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
+                    --
+                    if RootPart then
+                        RootPart.CFrame = CFrame.new(Mouse.Hit.Position) + Vector3.new(0, Atlanta:DistanceFromGround(Object, RootPart) + 1, 0)
+                    end
+                end
+            end)
+            --
+            Utility:Connection(RunService.RenderStepped, function()
+                for Index, Value in pairs(Visuals.Bases) do
+                    Utility:ThreadFunction(function()
+                        Value:Update()
+                    end, "3x02")
+                end
+                --
+                if Flags["LegitAimAssist_Enabled"]:Get() then
+                    Utility:ThreadFunction(Atlanta.UpdateFieldOfView, "2x01")
+                end
+                --
+                if Flags["LegitAimAssist_EnabledKey"]:Active() and not Flags["LegitAimAssist_ReadjustmentKey"]:Active() then
+                    Utility:ThreadFunction(Atlanta.GetAimAssistTarget, "2x02")
+                    Utility:ThreadFunction(Atlanta.AimAssist, "2x03")
+                else
+                    Atlanta.Locals.PossibleTarget = nil
+                    Atlanta.Locals.Target = nil
+                end
+                --
+                if Flags["LegitTriggerbot_EnabledKey"]:Active() and not Flags["LegitAimAssist_ReadjustmentKey"]:Active() then
+                    Utility:ThreadFunction(Atlanta.GetTriggerBotTarget, "2x04")
+                    Utility:ThreadFunction(Atlanta.TriggerBot, "2x05")
+                else
+                    Atlanta.Locals.TriggerTarget = nil
+                end 
+                --
+                Utility:ThreadFunction(Library.UpdateHue, "0x01")
+                Utility:ThreadFunction(Visuals.Update, "3x01")
+                Utility:ThreadFunction(Movement.Update, "4x01")
+                Utility:ThreadFunction(Chat.AttemptSend, "5x01")
+            end)
+            --
+            Utility:Connection(RunService.Stepped, function()
+                if Flags["MiscExtra_NoclipKey"]:Active() then
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
+                    local BodyParts = (RootPart and Atlanta:GetBodyParts(Object, RootPart))
+                    --
+                    if RootPart then
+                        for Index, Value in pairs(BodyParts) do
+                            if Value:IsA("BasePart") and Value.CanCollide == true then
+                                Value.CanCollide = false
+                            end
+                        end
+                    end
+                end
+            end)
+            --
+            Utility:Connection(RunService.Heartbeat, function()
+                local Tick = tick()
+                local FakeLagging = false
+                --
+                local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
+                --
+                if RootPart then
+                    Desync.Real.CFrame = RootPart.CFrame
+                    Desync.Real.Velocity = RootPart.Velocity
+                    Desync.Real.RotVelocity = RootPart.RotVelocity
+                    --
+                    local Normal = false
+                    --
+                    if Flags["MiscExtra_FakeLagKey"]:Active() then
+                        local FakeLagMultiplier = Flags["MiscExtra_FakeLagMultiplier"]:Get()
+                        local FakeLagAmmount = (Flags["MiscExtra_FakeLagAmmount"]:Get() / 7500) * FakeLagMultiplier
+                        --
+                        if (Tick - Atlanta.Locals.LastTick) < FakeLagAmmount then
+                            sethiddenproperty(RootPart, "NetworkIsSleeping", false)
+                            --
+                            if Desync.Enabled then
+                                RootPart.CFrame = Desync.Fake.CFrame or RootPart.CFrame
+                                RootPart.Velocity = Desync.Fake.Velocity or RootPart.Velocity
+                                RootPart.RotVelocity = Desync.Fake.RotVelocity or RootPart.RotVelocity
+                            end
+                            --
+                            sethiddenproperty(RootPart, "NetworkIsSleeping", true)
+                            --
+                            FakeLagging = true
+                        else
+                            Atlanta.Locals.LastTick = Tick
+                            --
+                            sethiddenproperty(RootPart, "NetworkIsSleeping", false)
+                            --
+                            if Flags["MiscExtra_Return"]:Get() then
+                                if Flags["MiscExtra_ReturnType"]:Get() == "Always" then
+                                    Normal = true
+                                else
+                                    Normal = Random(1, 2) == 1
+                                end
+                            end
+                        end
+                    end
+                    --
+                    if Flags["MiscExtra_DisableNetworkingKey"]:Active() then
+                        sethiddenproperty(RootPart, "NetworkIsSleeping", true)
+                    end
+                    --
+                    if Desync.Enabled then
+                        RootPart.CFrame = Normal and Desync.Real.CFrame or (Desync.Fake.CFrame or RootPart.CFrame)
+                        RootPart.Velocity = Desync.Fake.Velocity or RootPart.Velocity
+                        RootPart.RotVelocity = Desync.Fake.RotVelocity or RootPart.RotVelocity
+                        --
+                        Desync.Sent = RootPart.CFrame
+                    end
+                end
+                --
+                if (Tick - Atlanta.Locals.LastPreviewUpdate) > 0.05 then
+                    Utility:ThreadFunction(Utility.UpdatePreview)
+                    Atlanta.Locals.LastPreviewUpdate = Tick
+                end
+                --
+                Utility:ThreadFunction(Visualisation.Update, "6x01", FakeLagging)
+            end)
+            --
+            Utility:Connection(Players.PlayerAdded, function(Player)
+                Atlanta:PlayerAdded(Player)
+            end)
+            --
+            Utility:Connection(Client.CharacterAdded, function(Character)
+                repeat Wait() until Character:FindFirstChildOfClass("Humanoid")
+                local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+                --
+                Movement:HandleHumanoid(Humanoid, "4x02")
+                --
+                Wait(0.5)
+                --
+                --Visualisation:CreateClone(Character)
+            end)
+            --
+            Utility:Connection(Client.CharacterRemoving, function(Character)
+                if Visualisation.Character then
+                    for Index, Value in pairs(Visualisation.Character) do
+                        Utility:RemoveInstance(Value)
+                    end
+                end
+                --
+                Visualisation.Character = nil
+            end)
+            --
+            Utility:Connection(UserInputService.JumpRequest, function()
+                if Flags["MiscMovement_Bunnyhop"]:Get() and (UserInputService:IsKeyDown(Enum.KeyCode.W) == false) and (UserInputService:IsKeyDown(Enum.KeyCode.A) or UserInputService:IsKeyDown(Enum.KeyCode.D)) and Movement.Velocity < Flags["MiscMovement_BunnyhopVelocity"]:Get() then
+                    Movement.Velocity = Movement.Velocity + (Flags["MiscMovement_BunnyhopGains"]:Get() / 10)
+                end
+            end)
+        end
+        --[[
+        do -- Hooks
+            local NewIndex
+            local Index
+            --
+            NewIndex = hookmetamethod(game, "__newindex", function(Self, Property, Value)
+                if Self == Lighting and not checkcaller() and Atlanta.Locals.Lighting[Property] then
+                    Visuals:Refresh()
+                    --
+                    Atlanta.Locals.Lighting[Property] = Value
+                    --
+                    return
+                elseif Self == Index(Workspace, "CurrentCamera") and not checkcaller() then
+                    if Property == "CFrame" then
+                        if Flags["VisualsExtra_ThirdPersonKey"]:Active() then
+                            Value = Value + Index(Workspace, "CurrentCamera").CFrame.LookVector * -Flags["VisualsExtra_ThirdPersonAmmount"]:Get()
+                        end
+                    elseif Property == "FieldOfView" then
+                        Visuals:Refresh()
+                        --
+                        Atlanta.Locals.FieldOfView = Value
+                        --
+                        return
+                    end
+                end
+                --
+                return NewIndex(Self, Property, Value)
+            end)
+            --
+            Index = hookmetamethod(game, "__index", function(Self, Property)
+                if Self == Lighting and not checkcaller() and Atlanta.Locals.Lighting[Property] then
+                    return Atlanta.Locals.Lighting[Property]
+                elseif Self == Index(Workspace, "CurrentCamera") and not checkcaller() and Property == "FieldOfView" then
+                    return Atlanta.Locals.FieldOfView
+                end
+                --
+                return Index(Self, Property)
+            end)
+        end]]
+        --
+        for Index, Player in pairs(Atlanta:GetPlayers()) do
+            Atlanta:PlayerAdded(Player)
+        end
+        --
+        local Object = Atlanta:GetCharacter(Client)
+        --
+        if Object then
+            --Visualisation:CreateClone(Client.Character)
+            --
+            local Humanoid = Atlanta:GetHumanoid(Client, Object)
+            --
+            if Humanoid then
+                Movement:HandleHumanoid(Humanoid)
+            end
+        end
+    end
     --
     Window:Initialize()
     Utility:UpdatePreview(true)
