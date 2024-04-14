@@ -288,7 +288,7 @@ local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Twe
         ["Aim Assist"] = "Taikymo Pagalba",
         ["Trigger Bot"] = "Saidymo Botas",
 
-        ["Enabled"] = "Ijungtas",
+        ["Enabled"] = "Включено",
         ["Field Of View"] = "Matymo Ratas",
         ["Horizontal Smoothing"] = "Horizontalus Lygumas",
         ["Vertical Smoothing"] = "Vertikalus Lygumas",
