@@ -274,6 +274,154 @@ local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Twe
         ["Lag Switch"] = "Strigimo Jungiklis",
 
     },
+	["Russian"] = {
+        ["[%s]  -  [Account = $ACC [$UID],  Build = $BUILD,  Ping = $PING,  FPS = $FPS]"] = "[%s]  -  [Счет = $ACC [$UID],  Версия = $BUILD,  Ping = $PING,  FPS = $FPS]",
+        ["Legit"] = "Легит",
+        ["Rage"] = "Ярость",
+        ["Players"] = "Игроки",
+        ["Visuals"] = "Визуальные..",
+        ["Misc"] = "Разное",
+        ["Settings"] = "Настройки",
+        ["Configs"] = "Конфиги",
+
+        
+        ["Aim Assist"] = "Taikymo Pagalba",
+        ["Trigger Bot"] = "Saidymo Botas",
+
+        ["Enabled"] = "Ijungtas",
+        ["Field Of View"] = "Matymo Ratas",
+        ["Horizontal Smoothing"] = "Horizontalus Lygumas",
+        ["Vertical Smoothing"] = "Vertikalus Lygumas",
+        ["Dynamic Smoothing"] = "Dinaminis Lygumas",
+        ["Aim Assist Checks"] = "Taikymo Pagalbos Patikrinimai",
+        ["Hit Boxes"] = "Patikymo Dalis",
+        ["Randomise Hitbox Position"] = "Atsitiktinis Patikymo Dalis Pos.",
+        ["Hitscan Type"] = "Hit Skano Tipas",
+        ["Wall Check Origin"] = "Sienu Patikrinimas",
+        ["Readjustment"] = "Koregavimas",
+        ["Deadzone"] = "Ne Taikymo Zona",
+        ["Stutter"] = "Mikcioti",
+        ["Humaniser"] = "Humanizatorius",
+        ["Humaniser Scale"] = "Humanizatoriu Skale",
+
+        ["Delay"] = "Sutrukdyti",
+        ["Interval"] = "Intervalas",
+        ["Trigger Bot Checks"] = "Saidymo Boto Patikrinimai",
+
+        ["Cursor Offset"] = "Peles Poslinkis",
+
+
+        ["Enemies"] = "Враги",
+        ["Friendlies"] = "Товарищеские матчи",
+        ["Local"] = "Местный",
+        ["Colors"] = "Цвета",
+        ["Extra"] = "Дополнительно",
+
+        ["Name"] = "Имя",
+        ["Bounding Box"] = "Коробки",
+        ["Health Bar"] = "Бар здоровья",
+        ["Health Number"] = "Номер здоровья",
+        ["Offscreen Arrows"] = "Экранные стрелки",
+        ["Arrow Size"] = "размер стрелки",
+        ["Arrow Position"] = "Положение стрелки",
+        ["Arrow Types"] = "Типы стрел",
+        ["Arrow Distance"] = "Расстояние между стрелками",
+        ["Tool"] = "Инструмент",
+        ["Distance"] = "Расстояние",
+        ["Flags"] = "Флаги",
+        ["Flag Types"] = "Типы флагов",
+        ["Chams"] = "Чамс",
+        ["Automatic Color"] = "Автоматический цвет",
+        ["Max Distance"] = "Максимальное расстояние",
+
+        ["Visualisation"] = "Vizualizacija",
+        ["Visualise Server Position"] = "Vizualizuoti Serverio Posicija",
+        ["Visualisation Material"] = "Vizualizacijos Medziaga",
+
+        ["Highlight Friendlies"] = "Товарищеские матчи",
+        ["Highlight Priorities"] = "Выделите свои приоритеты",
+        ["Highlight Targets"] = "Выделите цели",
+
+        ["Use Display Name"] = "Использовать отображаемое имя",
+        ["Name Length"] = "Имя Длина",
+        ["Text Surround"] = "Текстовое окружение",
+        ["ESP Fade Out"] = "ESP Затухание",
+        ["Distance Measurement"] = "Измерение расстояния",
+
+
+        ["Lighting"] = "Atmosfera",
+        ["Camera"] = "Kamera",
+
+        ["Ambient"] = "Atmosfera",
+        ["Brightness"] = "Ryskuma",
+        ["Clock Time"] = "Laikas",
+        ["Color Shift"] = "Spalvu Poslinkis",
+        ["Exposure"] = "Poveikis",
+        ["Fog"] = "Rukas",
+        ["Fog End"] = "Ruko Galas",
+        ["Fog Start"] = "Ruko Pradis",
+        
+        ["Velocity Graph"] = "Greicio Grafikas",
+        ["Third Person"] = "Kameros Atstumas",
+        ["Freecam"] = "Pilna Kamera",
+        ["Zoom"] = "Priartinimas",
+        
+        ["Field Of View "] = "Kameros Priartinimas",
+        
+        ["Aim Assist FOV Circle"] = "Taikymo Pagalbos Ratas",
+        ["Deadzone FOV Circle"] = "Ne Taikymos Zonos Ratas",
+        
+        ["Cursor"] = "Pelite",
+        ["Dot"] = "Taskas",
+        ["Size"] = "Dydis",
+        ["Dynamic Size"] = "Dynamiskas Dydzis",
+        ["Gap"] = "Tarpas",
+        ["Spinning"] = "Sukasi",
+        ["Follow Mouse"] = "Sekti Pelite",
+        ["Thickness"] = "Storis",
+        ["Easing Style"] = "Svelninimo Stilius",
+
+
+        ["Main"] = "Pagrindinis",
+        ["Custom"] = "Pasirinktinis",
+        ["Chat"] = "Pokalbiu",
+        ["Movement"] = "Judejimas",
+
+        ["Client Desync"] = "Desinchronizavimas",
+        ["Speed"] = "Greitis",
+        ["Position Method"] = "Posicijios Metodas",
+        ["Turn Method"] = "Pasukimo Metodas",
+        ["Turn Smoothing"] = "Pasukimo Lygimas",
+        ["Easing Direction"] = "Svelninimo Kryptis",
+        ["Velocity Method"] = "Velocijos Metodas",
+        ["Velocity Multiplier"] = "Velocjos Daugiklis",
+
+        ["Chat Spam"] = "Pokalbio Slamstas",
+        ["Chat Spam Type"] = "Pokalbio Slamsto Tipas",
+        ["Song Name"] = "Dainos Pavadinimas",
+        ["Multiple"] = "Kelis",
+        ["Emojis"] = "Jaustukai",
+        ["Symbols"] = "Symbolai",
+
+        ["Speed"] = "Greitis",
+        ["Fly"] = "Skraidinimas",
+        ["Bunnyhop"] = "Bhop",
+        ["Bunnyhop Type"] = "Bhop Tipas",
+        ["Bunnyhop Velocity"] = "Bhop Greitis",
+        ["Bunnyhop Gains"] = "Bhop Prieaugis",
+        ["Jumpbug"] = "Suolio Bug",
+        ["Jumpbug Delay"] = "Suolio Bug Sutrukdinimas",
+        ["Click Teleport"] = "Spausti Teleportas",
+        ["Noclip"] = "Ne Susidurimo",
+        ["Disable Networking"] = "Isjungti Tinkla",
+        ["Fake Lag"] = "Netikras Atsilikimas",
+        ["Fake Lag Ammount"] = "Atsilikimo Suma",
+        ["Fake Lag Multiplier"] = "Atsilikimo Daugiklis",
+        ["Return Desync"] = "Grazinti Desinchro..",
+        ["Return Type"] = "Grazinimo Tipas",
+        ["Lag Switch"] = "Strigimo Jungiklis",
+
+    },
     ["Eng"] = {}
 }, {
     Configs = {},
@@ -320,7 +468,7 @@ local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Twe
     },
     Safe = true,
     Version = "Universal",
-    Language = "Lt",
+    Language = "Russian",
     Account = {
         Username = (lgVarsTbl and lgVarsTbl["DiscordUsername"] or "Matas"),
         UserID = 1
