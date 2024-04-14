@@ -145,6 +145,7 @@ local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Twe
         ["Horizontal Smoothing"] = "Horizontalus Lygumas",
         ["Vertical Smoothing"] = "Vertikalus Lygumas",
         ["Dynamic Smoothing"] = "Dinaminis Lygumas",
+        ["Aim Assist Checks"] = "Taikymo Pagalbos Patikrinimai",
         ["Hit Boxes"] = "Patikymo Dalis",
         ["Randomise Hitbox Position"] = "Atsitiktinis Patikymo Dalis Pos.",
         ["Hitscan Type"] = "Hit Skano Tipas",
@@ -157,6 +158,7 @@ local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Twe
 
         ["Delay"] = "Sutrukdyti",
         ["Interval"] = "Intervalas",
+        ["Trigger Bot Checks"] = "Saidymo Boto Patikrinimai",
 
         ["Cursor Offset"] = "Peles Poslinkis",
 
@@ -197,154 +199,6 @@ local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Twe
         ["Text Surround"] = "Teksto Apsuptis",
         ["ESP Fade Out"] = "ESP Isnyks Laikas",
         ["Distance Measurement"] = "Atstumo Matavimas",
-
-
-        ["Lighting"] = "Atmosfera",
-        ["Camera"] = "Kamera",
-
-        ["Ambient"] = "Atmosfera",
-        ["Brightness"] = "Ryskuma",
-        ["Clock Time"] = "Laikas",
-        ["Color Shift"] = "Spalvu Poslinkis",
-        ["Exposure"] = "Poveikis",
-        ["Fog"] = "Rukas",
-        ["Fog End"] = "Ruko Galas",
-        ["Fog Start"] = "Ruko Pradis",
-        
-        ["Velocity Graph"] = "Greicio Grafikas",
-        ["Third Person"] = "Kameros Atstumas",
-        ["Freecam"] = "Pilna Kamera",
-        ["Zoom"] = "Priartinimas",
-        
-        ["Field Of View "] = "Kameros Priartinimas",
-        
-        ["Aim Assist FOV Circle"] = "Taikymo Pagalbos Ratas",
-        ["Deadzone FOV Circle"] = "Ne Taikymos Zonos Ratas",
-        
-        ["Cursor"] = "Pelite",
-        ["Dot"] = "Taskas",
-        ["Size"] = "Dydis",
-        ["Dynamic Size"] = "Dynamiskas Dydzis",
-        ["Gap"] = "Tarpas",
-        ["Spinning"] = "Sukasi",
-        ["Follow Mouse"] = "Sekti Pelite",
-        ["Thickness"] = "Storis",
-        ["Easing Style"] = "Svelninimo Stilius",
-
-
-        ["Main"] = "Pagrindinis",
-        ["Custom"] = "Pasirinktinis",
-        ["Chat"] = "Pokalbiu",
-        ["Movement"] = "Judejimas",
-
-        ["Client Desync"] = "Desinchronizavimas",
-        ["Speed"] = "Greitis",
-        ["Position Method"] = "Posicijios Metodas",
-        ["Turn Method"] = "Pasukimo Metodas",
-        ["Turn Smoothing"] = "Pasukimo Lygimas",
-        ["Easing Direction"] = "Svelninimo Kryptis",
-        ["Velocity Method"] = "Velocijos Metodas",
-        ["Velocity Multiplier"] = "Velocjos Daugiklis",
-
-        ["Chat Spam"] = "Pokalbio Slamstas",
-        ["Chat Spam Type"] = "Pokalbio Slamsto Tipas",
-        ["Song Name"] = "Dainos Pavadinimas",
-        ["Multiple"] = "Kelis",
-        ["Emojis"] = "Jaustukai",
-        ["Symbols"] = "Symbolai",
-
-        ["Speed"] = "Greitis",
-        ["Fly"] = "Skraidinimas",
-        ["Bunnyhop"] = "Bhop",
-        ["Bunnyhop Type"] = "Bhop Tipas",
-        ["Bunnyhop Velocity"] = "Bhop Greitis",
-        ["Bunnyhop Gains"] = "Bhop Prieaugis",
-        ["Jumpbug"] = "Suolio Bug",
-        ["Jumpbug Delay"] = "Suolio Bug Sutrukdinimas",
-        ["Click Teleport"] = "Spausti Teleportas",
-        ["Noclip"] = "Ne Susidurimo",
-        ["Disable Networking"] = "Isjungti Tinkla",
-        ["Fake Lag"] = "Netikras Atsilikimas",
-        ["Fake Lag Ammount"] = "Atsilikimo Suma",
-        ["Fake Lag Multiplier"] = "Atsilikimo Daugiklis",
-        ["Return Desync"] = "Grazinti Desinchro..",
-        ["Return Type"] = "Grazinimo Tipas",
-        ["Lag Switch"] = "Strigimo Jungiklis",
-
-    },
-	["Russian"] = {
-        ["[%s]  -  [Account = $ACC [$UID],  Build = $BUILD,  Ping = $PING,  FPS = $FPS]"] = "[%s]  -  [Счет = $ACC [$UID],  Версия = $BUILD,  Ping = $PING,  FPS = $FPS]",
-        ["Legit"] = "Легит",
-        ["Rage"] = "Ярость",
-        ["Players"] = "Игроки",
-        ["Visuals"] = "Визуальные..",
-        ["Misc"] = "Разное",
-        ["Settings"] = "Настройки",
-        ["Configs"] = "Конфиги",
-
-        
-        ["Aim Assist"] = "Taikymo Pagalba",
-        ["Trigger Bot"] = "Saidymo Botas",
-
-        ["Enabled"] = "Включено",
-        ["Field Of View"] = "Matymo Ratas",
-        ["Horizontal Smoothing"] = "Horizontalus Lygumas",
-        ["Vertical Smoothing"] = "Vertikalus Lygumas",
-        ["Dynamic Smoothing"] = "Dinaminis Lygumas",
-
-        ["Hit Boxes"] = "Patikymo Dalis",
-        ["Randomise Hitbox Position"] = "Atsitiktinis Patikymo Dalis Pos.",
-        ["Hitscan Type"] = "Hit Skano Tipas",
-        ["Wall Check Origin"] = "Sienu Patikrinimas",
-        ["Readjustment"] = "Koregavimas",
-        ["Deadzone"] = "Ne Taikymo Zona",
-        ["Stutter"] = "Mikcioti",
-        ["Humaniser"] = "Humanizatorius",
-        ["Humaniser Scale"] = "Humanizatoriu Skale",
-
-        ["Delay"] = "Sutrukdyti",
-        ["Interval"] = "Intervalas",
-      
-
-        ["Cursor Offset"] = "Peles Poslinkis",
-
-
-        ["Enemies"] = "Враги",
-        ["Friendlies"] = "Товарищеские матчи",
-        ["Local"] = "Местный",
-        ["Colors"] = "Цвета",
-        ["Extra"] = "Дополнительно",
-
-        ["Name"] = "Имя",
-        ["Bounding Box"] = "Коробки",
-        ["Health Bar"] = "Бар здоровья",
-        ["Health Number"] = "Номер здоровья",
-        ["Offscreen Arrows"] = "Экранные стрелки",
-        ["Arrow Size"] = "размер стрелки",
-        ["Arrow Position"] = "Положение стрелки",
-        ["Arrow Types"] = "Типы стрел",
-        ["Arrow Distance"] = "Расстояние между стрелками",
-        ["Tool"] = "Инструмент",
-        ["Distance"] = "Расстояние",
-        ["Flags"] = "Флаги",
-        ["Flag Types"] = "Типы флагов",
-        ["Chams"] = "Чамс",
-        ["Automatic Color"] = "Автоматический цвет",
-        ["Max Distance"] = "Максимальное расстояние",
-
-        ["Visualisation"] = "Vizualizacija",
-        ["Visualise Server Position"] = "Vizualizuoti Serverio Posicija",
-        ["Visualisation Material"] = "Vizualizacijos Medziaga",
-
-        ["Highlight Friendlies"] = "Товарищеские матчи",
-        ["Highlight Priorities"] = "Выделите свои приоритеты",
-        ["Highlight Targets"] = "Выделите цели",
-
-        ["Use Display Name"] = "Использовать отображаемое имя",
-        ["Name Length"] = "Имя Длина",
-        ["Text Surround"] = "Текстовое окружение",
-        ["ESP Fade Out"] = "ESP Затухание",
-        ["Distance Measurement"] = "Измерение расстояния",
 
 
         ["Lighting"] = "Atmosfera",
@@ -489,8 +343,10 @@ local NfcNormalize, NfdNormalize, CharPattern, CodePoint, Graphemes, Offset, Cod
 local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = coroutine.isyieldable, coroutine.running, coroutine.status, coroutine.create, coroutine.resume, coroutine.close, coroutine.yield, coroutine.wrap
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
-
-local SetRenderProperty = setrenderproperty
+local CreateRenderObject = GetUpvalue(Drawing.new, 1)
+local DestroyRenderObject = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 3)
+local SetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__newindex, 4)
+local GetRenderProperty = GetUpvalue(GetUpvalue(Drawing.new, 7).__index, 4)
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
 --
@@ -512,26 +368,26 @@ do -- Preload
     --
     do -- Renders
         Visuals.Cursor = {}
-        Visuals.CursorDot = {Drawing.new("Square"), Drawing.new("Square")}
+        Visuals.CursorDot = {CreateRenderObject("Square"), CreateRenderObject("Square")}
         --
         for Index = 1, 4 do
-            Visuals.Cursor[Index] = {Drawing.new("Line"), Drawing.new("Line")}
+            Visuals.Cursor[Index] = {CreateRenderObject("Line"), CreateRenderObject("Line")}
         end
         --
         for Index = 1, 2 do
             local Circle = Index == 1 and "AimAssist" or "Deadzone"
             --
-            Visuals[Circle .. "Circle"] = Drawing.new("Circle")
+            Visuals[Circle .. "Circle"] = CreateRenderObject("Circle")
             SetRenderProperty(Visuals[Circle .. "Circle"], "Filled", true)
             SetRenderProperty(Visuals[Circle .. "Circle"], "ZIndex", 59)
             --
-            Visuals[Circle .. "Outline"] = Drawing.new("Circle")
+            Visuals[Circle .. "Outline"] = CreateRenderObject("Circle")
             SetRenderProperty(Visuals[Circle .. "Outline"], "Thickness", 1.5)
             SetRenderProperty(Visuals[Circle .. "Outline"], "Filled", false)
             SetRenderProperty(Visuals[Circle .. "Outline"], "ZIndex", 60)
         end
         --
-        Visuals.Watermark = Drawing.new("Text")
+        Visuals.Watermark = CreateRenderObject("Text")
         SetRenderProperty(Visuals.Watermark, "Text", "Splix/Gamesneeze.cc/Atlanta.Space Beta 1.01")
         SetRenderProperty(Visuals.Watermark, "Size", 13)
         SetRenderProperty(Visuals.Watermark, "Font", 2)
@@ -1046,7 +902,7 @@ do -- Visualisation
     end
     --
     function Visualisation:Update(FakeLagging)
-        local Object, RootPart = Atlanta:ValidateClient(Client)
+        local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
         --
         if RootPart then
             if Visualisation.Character then
@@ -1109,9 +965,114 @@ do -- Visualisation
 end
 --
 do -- Movement
-  
+    function Movement:HandleHumanoid(Humanoid)
+        Humanoid.StateChanged:Connect(function(Old, New)
+            if New == Enum.HumanoidStateType.Landed then
+                if Flags["MiscMovement_Bunnyhop"]:Get() then
+                    Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+                end
+            end
+        end)
+    end
     --
-    
+    function Movement:Update()
+        local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
+        --
+        if RootPart then
+            local Camera = Workspace.CurrentCamera
+            --
+            if Flags["MiscMovement_SpeedKey"]:Active() then
+                local SpeedNum = Flags["MiscMovement_SpeedNum"]:Get()
+                --
+                local Travel = Vector3.new(0, 0, 0)
+                local LookVector = Camera.CFrame.LookVector
+                local RightVector = Camera.CFrame.RightVector
+                --
+                if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+                    Travel += LookVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+                    Travel -= LookVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+                    Travel += RightVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+                    Travel -= RightVector
+                end
+                --
+                --RootPart.CFrame = RootPart.CFrame + (RootPart.CFrame.LookVector * 0.25)
+                RootPart.Velocity = Vector3.new(Travel.X * SpeedNum, RootPart.Velocity.Y, Travel.Z * SpeedNum)
+            end
+            --
+            if Flags["MiscMovement_FlyKey"]:Active() then
+                local FlyNum = Flags["MiscMovement_FlyNum"]:Get()
+                --
+                local Travel = Vector3.new(0, 0, 0)
+                local LookVector = Camera.CFrame.LookVector
+                --
+                if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+                    Travel += LookVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+                    Travel -= LookVector
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+                    Travel += Vector3.new(-LookVector.Z, 0, LookVector.X)
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+                    Travel += Vector3.new(LookVector.Z, 0, -LookVector.X)
+                end
+                if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+                    Travel += Vector3.new(0, 1, 0)
+                end
+                --
+                if Travel.Unit.X == Travel.Unit.X then
+                    RootPart.Anchored = false
+                    RootPart.Velocity = Travel.Unit * FlyNum
+                else
+                    RootPart.Velocity = Vector3.new(0, 0, 0)
+                    RootPart.Anchored = true
+                end
+            else
+                if RootPart.Anchored then
+                    RootPart.Anchored = false
+                end
+            end
+            --
+            if Flags["MiscMovement_BunnyhopKey"]:Active() then
+                local BunnyhopVelocity = Flags["MiscMovement_BunnyhopVelocity"]:Get()
+                local BunnyhopType = Flags["MiscMovement_BunnyhopType"]:Get()
+                --
+                if not Atlanta:OnGround(Object, RootPart) and Movement.Velocity ~= 0 then
+                    Movement.Velocity = Clamp(Movement.Velocity, 0, BunnyhopVelocity)
+                    --
+                    RootPart.CFrame = RootPart.CFrame + (RootPart.CFrame.LookVector * ((BunnyhopType == "Gradual" and Movement.Velocity or BunnyhopVelocity) / 5) / 6)
+                end
+                --
+                if not UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+                    Movement.Velocity = 0
+                elseif UserInputService:IsKeyDown(Enum.KeyCode.Space) and UserInputService:IsKeyDown(Enum.KeyCode.W) then
+                    Movement.Velocity = Clamp(Movement.Velocity - 0.01, 0, BunnyhopVelocity)
+                end
+            end
+            --
+            if Flags["MiscMovement_JumpbugKey"]:Active() then
+                local Delay = Flags["MiscMovement_JumpbugDelay"]:Get()
+                --
+                Movement.State = {Humanoid:GetState(), Movement.State[1]}
+                --
+                if Movement.State[2] ~= Movement.State[1] and Movement.State[1] == Enum.HumanoidStateType.Freefall and Movement.State[2] ~= Enum.HumanoidStateType.Jumping then
+                    RootPart.CFrame = Movement.LastPosition
+                    RootPart.Velocity = Vector3.new(RootPart.Velocity.X, Atlanta:GetJumpPower(), RootPart.Velocity.Z)
+                end
+                --
+                Movement.LastPosition = RootPart.CFrame
+            end
+        end
+    end
+end
+--
 do -- Camera
     function Camera:AngleEdge(Angle, Inset)
         local ScreenSize = Workspace.CurrentCamera.ViewportSize
@@ -1654,17 +1615,31 @@ do -- Atlanta
         return Player.Character
     end
     --
-    --
-    function Atlanta:GetHealth(Player, Character)
-       return "100"
+    function Atlanta:GetHumanoid(Player, Character)
+        return Character:FindFirstChildOfClass("Humanoid")
     end
     --
-
+    function Atlanta:GetHealth(Player, Character, Humanoid)
+        if Humanoid then
+            return Clamp(Humanoid.Health, 0, Humanoid.MaxHealth), Humanoid.MaxHealth
+        end
+    end
     --
+    function Atlanta:GetJumpPower(Player, Chareacter, Humanoid)
+        return Humanoid.JumpPower
+    end
     --
-
+    function Atlanta:GetRootPart(Player, Character, Humanoid)
+        return Humanoid.RootPart
+    end
     --
-
+    function Atlanta:GetLatency()
+        return (Ping:GetValue() / 1000)
+    end
+    --
+    function Atlanta:GetTeam(Player)
+        return Player.Team
+    end
     --
     function Atlanta:GetPlayerParent(Player)
         return Player.Parent
@@ -1686,14 +1661,14 @@ do -- Atlanta
     --
     function Atlanta:GetOrigin(Origin)
         if Origin == "Head" then
-            local Object, RootPart = Atlanta:ValidateClient(Client)
+            local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
             local Head = Object:FindFirstChild("Head")
             --
             if Head and Head:IsA("RootPart") then
                 return Head.CFrame.Position
             end
         elseif Origin == "Torso" then
-            local Object, RootPart = Atlanta:ValidateClient(Client)
+            local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
             --
             if RootPart then
                 return RootPart.CFrame.Position
@@ -1737,17 +1712,18 @@ do -- Atlanta
         return Parts
     end
     --
-    function Atlanta:ClientAlive(Player, Character)
-        local Health, MaxHealth = Atlanta:GetHealth(Player, Character)
+    function Atlanta:ClientAlive(Player, Character, Humanoid)
+        local Health, MaxHealth = Atlanta:GetHealth(Player, Character, Humanoid)
         --
         return (Health > 0)
     end
     --
     function Atlanta:ValidateClient(Player)
         local Object = Atlanta:GetCharacter(Player)
-        local RootPart = (Atlanta:GetRootPart(Player, Object))
+        local Humanoid = (Object and Atlanta:GetHumanoid(Player, Object))
+        local RootPart = (Humanoid and Atlanta:GetRootPart(Player, Object, Humanoid))
         --
-        return Object, RootPart
+        return Object, Humanoid, RootPart
     end
     --
     function Atlanta:OnGround(Character, RootPart)
@@ -1828,6 +1804,7 @@ do -- Atlanta
         local FieldOfView = Flags["LegitAimAssist_FieldOfView"]
         local Deadzone = Flags["LegitAimAssist_Deadzone"]
         local Hitboxes = Flags["LegitAimAssist_Hitbox"]:Get()
+        local Checks = Flags["LegitAimAssist_Checks"]:Get()
         local Dynamic = Flags["LegitAimAssist_Dynamic"]:Get() * 25
         --
         local Disabled = FieldOfView.Disabled
@@ -1845,11 +1822,14 @@ do -- Atlanta
         }
         --
         for Index, Player in pairs(Atlanta:GetPlayers()) do
-          
+            if Player ~= Client then
+                if (Find(Checks, "Team Check") and not Atlanta:CheckTeam(Client, Player)) then continue end
                 --
-                local Object, RootPart = Atlanta:ValidateClient(Player)
+                local Object, Humanoid, RootPart = Atlanta:ValidateClient(Player)
                 --
-                if (Object and RootPart) then
+                if (Object and Humanoid and RootPart) then
+                    if (Find(Checks, "Forcefield Check") and Object:FindFirstChildOfClass("ForceField")) then continue end
+                    if (Find(Checks, "Alive Check") and not Atlanta:ClientAlive(Player, Character, Humanoid)) then continue end
                     --
                     local Position, Visible = Workspace.CurrentCamera:WorldToViewportPoint(RootPart.CFrame.Position)
                     local Position2 = Vector2.new(Position.X, Position.Y)
@@ -1882,7 +1862,7 @@ do -- Atlanta
                         local ClosestPart, ClosestVector, ClosestMagnitude = nil, nil, Huge
                         --
                         for Index2, Part in pairs(Atlanta:GetBodyParts(Object, RootPart, false, Hitboxes)) do
-                          
+                            if (Find(Checks, "Visible Check") and not (Part.Transparency ~= 1)) then continue end
                             --
                             local HitboxPosition
                             --
@@ -1900,7 +1880,7 @@ do -- Atlanta
                             --
                             if Position4 and Visible2 then
                                 if ((not Disabled) and not (Magnitude2 <= SelfAimAssistFOV)) then continue end
-                               
+                                if (Find(Checks, "Wall Check") and not Atlanta:RayCast(Part, Atlanta:GetOrigin(Origin), {Atlanta:GetCharacter(Client), Atlanta:GetIgnore(true)})) then continue end
                                 --
                                 if Magnitude2 <= ClosestMagnitude then
                                     ClosestPart = Part
@@ -1923,7 +1903,7 @@ do -- Atlanta
                         end
                     end
                 end
-         
+            end
         end
         --
         if Target.Player and Target.Object and Target.Part and Target.Vector and Target.Magnitude then
@@ -1953,20 +1933,22 @@ do -- Atlanta
         local MouseLocation = Utility:MousePosition(true)
         --
         local Hitboxes = Flags["LegitTriggerbot_Hitbox"]:Get()
-
+        local Checks = Flags["LegitTriggerbot_Checks"]:Get()
         local Origin = Flags["LegitTriggerbot_WallCheckOrigin"]:Get()
         --
         for Index, Player in pairs(Atlanta:GetPlayers()) do
             if Player ~= Client then
-               
+                if (Find(Checks, "Team Check") and not Atlanta:CheckTeam(Client, Player)) then continue end
                 --
-                local Object, RootPart = Atlanta:ValidateClient(Player)
+                local Object, Humanoid, RootPart = Atlanta:ValidateClient(Player)
                 --
-                if (Object and RootPart) then
-                   
+                if (Object and Humanoid and RootPart) then
+                    if (Find(Checks, "Forcefield Check") and Object:FindFirstChildOfClass("ForceField")) then continue end
+                    if (Find(Checks, "Alive Check") and not Atlanta:ClientAlive(Player, Character, Humanoid)) then continue end
                     --
                     for Index2, Part in pairs(Atlanta:GetBodyParts(Object, RootPart, false, Hitboxes)) do
-                   
+                        if (Find(Checks, "Visible Check") and not (Part.Transparency ~= 1)) then continue end
+                        if (Find(Checks, "Wall Check") and not Atlanta:RayCast(Part, Atlanta:GetOrigin(Origin), {Atlanta:GetCharacter(Client), Atlanta:GetIgnore(true)})) then continue end
                         --
                         Targets[#Targets + 1] = Part
                     end
@@ -2119,7 +2101,8 @@ do -- Atlanta
                     end
                 end
                 --
-
+                function Movement:HandleHumanoid(Humanoid)
+                end
                 --
                 function Atlanta:GetTeam(Player)
                     for Index, Team in pairs(Teams:GetChildren()) do
@@ -2138,9 +2121,11 @@ do -- Atlanta
                     --return Modules.Characters:GetCharacter(Player)
                 end
                 --
-
+                function Atlanta:GetHumanoid(Player, Character)
+                    return "Humanoid"
+                end
                 --
-                function Atlanta:GetHealth(Player, Character)
+                function Atlanta:GetHealth(Player, Character, Humanoid)
                     local Health = Character:FindFirstChild("Health")
                     local MaxHealth = (Health and Health:FindFirstChild("MaxHealth"))
                     --
@@ -2149,16 +2134,16 @@ do -- Atlanta
                     end
                 end
                 --
-                function Atlanta:GetJumpPower(Player, Character)
+                function Atlanta:GetJumpPower(Player, Character, Humanoid)
                     return 16
                 end
                 --
-                function Atlanta:GetRootPart(Player, Character)
+                function Atlanta:GetRootPart(Player, Character, Humanoid)
                     return Character:FindFirstChild("Root")
                 end
                 --
-                function Atlanta:ClientAlive(Player, Character)
-                    local Health = Atlanta:GetHealth(Player, Character)
+                function Atlanta:ClientAlive(Player, Character, Humanoid)
+                    local Health = Atlanta:GetHealth(Player, Character, Humanoid)
                     --
                     return Health ~= 0
                 end
@@ -2245,6 +2230,8 @@ do -- Atlanta
                     end
                 end
                 --
+                function Movement:HandleHumanoid(Humanoid)
+                end
                 --
                 function Atlanta:GetCharacter(Player)
                     local Parts = Modules.Replication.getbodyparts(Player)
@@ -2252,20 +2239,23 @@ do -- Atlanta
                     return (Parts and Parts.head and Parts.head.Parent)
                 end
                 --
+                function Atlanta:GetHumanoid(Player, Character)
+                    return "Humanoid"
+                end
                 --
-                function Atlanta:GetHealth(Player, Character)
+                function Atlanta:GetHealth(Player, Character, Humanoid)
                     return Modules.Hud:getplayerhealth(Player)
                 end
                 --
-                function Atlanta:GetJumpPower(Player, Character)
+                function Atlanta:GetJumpPower(Player, Character, Humanoid)
                     return 16
                 end
                 --
-                function Atlanta:GetRootPart(Player, Character)
+                function Atlanta:GetRootPart(Player, Character, Humanoid)
                     return Character:FindFirstChild("Torso")
                 end
                 --
-                function Atlanta:ClientAlive(Player, Character)
+                function Atlanta:ClientAlive(Player, Character, Humanoid)
                     return Modules.Hud:isplayeralive(Player)
                 end
                 --
@@ -2356,8 +2346,8 @@ do -- Atlanta
             [{7538200407}] = {Name = "RAC", Func = function()
                 local HitParts = {"HitBox", "BigHitBox", "MiniHitBox"}
                 --
-                function Atlanta:GetRootPart(Player, Character)
-                    return Find(HitParts, Character.Name) and Character:FindFirstChild("Part") or Character:FindFirstChild("HumanoidRootPart")
+                function Atlanta:GetRootPart(Player, Character, Humanoid)
+                    return Find(HitParts, Character.Name) and Character:FindFirstChild("Part") or Humanoid.RootPart
                 end
                 --
                 function Atlanta:GetPlayers()
@@ -2462,18 +2452,18 @@ do -- Visuals
                         Tick = tick()
                     },
                     Renders = {
-                        Flags = Drawing.new("Text"),
-                        Weapon = Drawing.new("Text"),
-                        Distance = Drawing.new("Text"),
-                        HealthBarOutline = Drawing.new("Square"),
-                        HealthBarInline = Drawing.new("Square"),
-                        HealthBarValue = Drawing.new("Text"),
-                        BoxFill = Drawing.new("Square"),
-                        BoxOutline = Drawing.new("Square"),
-                        BoxInline = Drawing.new("Square"),
-                        Name = Drawing.new("Text"),
-                        Arrow = Drawing.new("Triangle"),
-                        ArrowOutline = Drawing.new("Triangle")
+                        Flags = CreateRenderObject("Text"),
+                        Weapon = CreateRenderObject("Text"),
+                        Distance = CreateRenderObject("Text"),
+                        HealthBarOutline = CreateRenderObject("Square"),
+                        HealthBarInline = CreateRenderObject("Square"),
+                        HealthBarValue = CreateRenderObject("Text"),
+                        BoxFill = CreateRenderObject("Square"),
+                        BoxOutline = CreateRenderObject("Square"),
+                        BoxInline = CreateRenderObject("Square"),
+                        Name = CreateRenderObject("Text"),
+                        Arrow = CreateRenderObject("Triangle"),
+                        ArrowOutline = CreateRenderObject("Triangle")
                     }
                 }, {
                     __index = Visuals.Base
@@ -2667,7 +2657,7 @@ do -- Visuals
             SetRenderProperty(Visuals.DeadzoneOutline, "Visible", false)
         end
         --
-        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (Visuals.Watermark.TextBounds.X) - 10, 10))
+        SetRenderProperty(Visuals.Watermark, "Position", Vector2.new(Workspace.CurrentCamera.ViewportSize.X - (GetRenderProperty(Visuals.Watermark, "TextBounds").X) - 10, 10))
         --
         if Flags["VisualsCursor_Cursor"]:Get() then
             local CursorColor, CursorTransparency = Flags["VisualsCursor_CursorColor"]:Get().Color, Flags["VisualsCursor_CursorColor"]:Get().Transparency
@@ -2747,21 +2737,21 @@ do -- Visuals
         end
         --
         for Index, Value in pairs(Visuals.Cursor) do
-            Value[1]:Remove()
-            Value[2]:Remove()
+            DestroyRenderObject(Value[1])
+            DestroyRenderObject(Value[2])
         end
         --
         for Index, Value in pairs(Visuals.CursorDot) do
-            Value:Remove()
+            DestroyRenderObject(Value)
         end
         --
         for Index = 1, 2 do
             local Circle = Index == 1 and "AimAssist" or "Deadzone"
-            Visuals[Circle .. "Circle"]:Remove()
-            Visuals[Circle .. "Outline"]:Remove()
+            DestroyRenderObject(Visuals[Circle .. "Circle"])
+            DestroyRenderObject(Visuals[Circle .. "Outline"])
         end
         --
-        Visuals.Watermark:Remove()
+        DestroyRenderObject(Visuals.Watermark)
         --
         for Index, Value in pairs(Atlanta.Locals.Lighting) do
             Lighting[Index] = Value
@@ -2781,7 +2771,7 @@ do -- Visuals
             Self.Object = nil
             --
             for Index, Value in pairs(Self.Renders) do
-                Value:Remove()
+                DestroyRenderObject(Value)
             end
             --
             Self.Highlight:Remove()
@@ -2827,12 +2817,12 @@ do -- Visuals
                 local Selection = "Players" .. ((Player == Client) and "Local" or Atlanta:CheckTeam(Client, Player) and "Enemies" or "Friendlies") .. "_"
                 --
                 if Flags[Selection .. "Enabled"]:Get() then
-                    local Object, RootPart = Atlanta:ValidateClient(Player)
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Player)
                     local BodyParts = (RootPart and Atlanta:GetBodyParts(Object, RootPart, true))
                     local TransparencyMultplier = 1
                     --
-                    if Object and Object.Parent and (RootPart and BodyParts) then
-                        local Health, MaxHealth = Atlanta:GetHealth(Player, Object)
+                    if Object and Object.Parent and (Humanoid and RootPart and BodyParts) then
+                        local Health, MaxHealth = Atlanta:GetHealth(Player, Object, Humanoid)
                         --
                         Info.Pass = true
                         Info.RootPartCFrame = RootPart.CFrame
@@ -3228,6 +3218,7 @@ do -- UI
             Legit_AimAssist:Slider({Name = Languages:GetTranslation("Horizontal Smoothing"), Flag = "LegitAimAssist_HorizontalSmoothing", Default = 12.5, Minimum = 1, Maximum = 100, Decimals = 0.01, Ending = "%"})
             Legit_AimAssist:Slider({Name = Languages:GetTranslation("Vertical Smoothing"), Flag = "LegitAimAssist_VerticalSmoothing", Default = 5, Minimum = 1, Maximum = 100, Decimals = 0.01, Ending = "%"})
             Legit_AimAssist:Slider({Name = Languages:GetTranslation("Dynamic Smoothing"), Flag = "LegitAimAssist_DynamicSmoothing", Default = 100.5, Maximum = 100.5, Minimum = 0.01, Decimals = 0.01, Disable = {"Disabled", 0.5, 100}})
+            Legit_AimAssist:Multibox({Name = Languages:GetTranslation("Aim Assist Checks"), Flag = "LegitAimAssist_Checks", Options = {"Team Check", "Wall Check", "Visible Check", "Forcefield Check", "Alive Check"}, Default = {"Team Check", "Wall Check", "Alive Check"}})
             Legit_AimAssist:Multibox({Name = Languages:GetTranslation("Hit Boxes"), Flag = "LegitAimAssist_Hitbox", Options = {"Head", "Torso", "Arms", "Legs"}, Default = {"Head", "Torso"}, Minimum = 1})
             Legit_AimAssist:Toggle({Name = Languages:GetTranslation("Randomise Hitbox Position"), Flag = "LegitAimAssist_RandomiseHitbox", Default = false})
             Legit_AimAssist:Dropdown({Name = Languages:GetTranslation("Hitscan Type"), Flag = "LegitAimAssist_HitscanType", Options = {"Mouse", "Distance", "Health"}, Default = "Mouse"})
@@ -3241,7 +3232,7 @@ do -- UI
             Legit_Triggerbot:Toggle({Name = Languages:GetTranslation("Enabled"), Flag = "LegitTriggerbot_Enabled"}):Keybind({Flag = "LegitTriggerbot_EnabledKey", Default = "None", KeybindName = Languages:GetTranslation("Trigger Bot"), Mode = "Always"})
             Legit_Triggerbot:Slider({Name = Languages:GetTranslation("Delay"), Flag = "LegitTriggerbot_Delay", Default = 12.5, Minimum = 0.5, Maximum = 500.5, Decimals = 1, Disable = {"Disabled", 1, 500}, Ending = "ms"})
             Legit_Triggerbot:Slider({Name = Languages:GetTranslation("Interval"), Flag = "LegitTriggerbot_Interval", Default = 75, Minimum = 0.5, Maximum = 1000, Decimals = 1, Disable = {"Disabled", 1, 1000}, Ending = "ms"})
-        
+            Legit_Triggerbot:Multibox({Name = Languages:GetTranslation("Trigger Bot Checks"), Flag = "LegitTriggerbot_Checks", Options = {"Team Check", "Wall Check", "Visible Check", "Forcefield Check", "Alive Check"}, Default = {"Team Check", "Wall Check", "Visible Check", "Alive Check"}})
             Legit_Triggerbot:Multibox({Name = Languages:GetTranslation("Hit Boxes"), Flag = "LegitTriggerbot_Hitbox", Options = {"Head", "Torso", "Arms", "Legs"}, Default = {"Head", "Torso"}, Minimum = 1})
             Legit_Triggerbot:Dropdown({Name = Languages:GetTranslation("Wall Check Origin"), Flag = "LegitTriggerbot_WallCheckOrigin", Options = {"Camera", "Head", "Torso"}, Default = "Camera"})
             Legit_Triggerbot:Toggle({Name = Languages:GetTranslation("Readjustment"), Flag = "LegitTriggerbot_Readjustment"}):Keybind({Flag = "LegitTriggerbot_Readjustment", Default = Enum.UserInputType.MouseButton2, KeybindName = Languages:GetTranslation("TB Readjustment"), Mode = "On Hold"})
@@ -3364,7 +3355,7 @@ do -- UI
                 Desync.Enabled = State
                 --
                 if Atlanta:GetCharacter(Client) then
-                    local Object, RootPart = Atlanta:ValidateClient(Client)
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
                     --
                     if RootPart then
                         if Desync.Enabled then
@@ -3496,7 +3487,7 @@ do -- UI
         do -- Connections
             RunService:BindToRenderStep("Desync", Enum.RenderPriority.First.Value, function()
                 if Desync.Enabled then
-                    local Object, RootPart = Atlanta:ValidateClient(Client)
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
                     local Head = (Object and Object:FindFirstChild("Head"))
                     --
                     if RootPart and Head then
@@ -3623,7 +3614,7 @@ do -- UI
             --
             Utility:Connection(UserInputService.InputBegan, function(Input)
                 if Input.UserInputType == Enum.UserInputType.MouseButton1 and Flags["MiscExtra_ClickKey"]:Active() then
-                    local Object, RootPart = Atlanta:ValidateClient(Client)
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
                     --
                     if RootPart then
                         RootPart.CFrame = CFrame.new(Mouse.Hit.Position) + Vector3.new(0, Atlanta:DistanceFromGround(Object, RootPart) + 1, 0)
@@ -3659,12 +3650,13 @@ do -- UI
                 --
                 Utility:ThreadFunction(Library.UpdateHue, "0x01")
                 Utility:ThreadFunction(Visuals.Update, "3x01")
+                Utility:ThreadFunction(Movement.Update, "4x01")
                 Utility:ThreadFunction(Chat.AttemptSend, "5x01")
             end)
             --
             Utility:Connection(RunService.Stepped, function()
                 if Flags["MiscExtra_NoclipKey"]:Active() then
-                    local Object, RootPart = Atlanta:ValidateClient(Client)
+                    local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
                     local BodyParts = (RootPart and Atlanta:GetBodyParts(Object, RootPart))
                     --
                     if RootPart then
@@ -3681,7 +3673,7 @@ do -- UI
                 local Tick = tick()
                 local FakeLagging = false
                 --
-                local Object, RootPart = Atlanta:ValidateClient(Client)
+                local Object, Humanoid, RootPart = Atlanta:ValidateClient(Client)
                 --
                 if RootPart then
                     Desync.Real.CFrame = RootPart.CFrame
@@ -3746,6 +3738,16 @@ do -- UI
                 Atlanta:PlayerAdded(Player)
             end)
             --
+            Utility:Connection(Client.CharacterAdded, function(Character)
+                repeat Wait() until Character:FindFirstChildOfClass("Humanoid")
+                local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+                --
+                Movement:HandleHumanoid(Humanoid, "4x02")
+                --
+                Wait(0.5)
+                --
+                --Visualisation:CreateClone(Character)
+            end)
             --
             Utility:Connection(Client.CharacterRemoving, function(Character)
                 if Visualisation.Character then
@@ -3757,7 +3759,11 @@ do -- UI
                 Visualisation.Character = nil
             end)
             --
-    
+            Utility:Connection(UserInputService.JumpRequest, function()
+                if Flags["MiscMovement_Bunnyhop"]:Get() and (UserInputService:IsKeyDown(Enum.KeyCode.W) == false) and (UserInputService:IsKeyDown(Enum.KeyCode.A) or UserInputService:IsKeyDown(Enum.KeyCode.D)) and Movement.Velocity < Flags["MiscMovement_BunnyhopVelocity"]:Get() then
+                    Movement.Velocity = Movement.Velocity + (Flags["MiscMovement_BunnyhopGains"]:Get() / 10)
+                end
+            end)
         end
         --[[
         do -- Hooks
@@ -3808,7 +3814,11 @@ do -- UI
         if Object then
             --Visualisation:CreateClone(Client.Character)
             --
-
+            local Humanoid = Atlanta:GetHumanoid(Client, Object)
+            --
+            if Humanoid then
+                Movement:HandleHumanoid(Humanoid)
+            end
         end
     end
     --
