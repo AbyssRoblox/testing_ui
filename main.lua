@@ -71,7 +71,7 @@ do -- Folders
     end
 end
 -- // Tables
-local Library, Utility, Flags, Theme = loadfile("Atlanta/Library.lua")()
+local Library, Utility, Flags, Theme = loadfile("Atlanta/Library.lua")
 --
 local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Tween, Chat, Languages, Atlanta = {
     Default = {1, [[{"Outline":"000000","Accent":"5d3e98","LightText":"ffffff","DarkText":"afafaf","LightContrast":"1e1e1e","CursorOutline":"0a0a0a","DarkContrast":"141414","TextBorder":"000000","Inline":"323232"}]]},
