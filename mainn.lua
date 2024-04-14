@@ -343,7 +343,6 @@ local NfcNormalize, NfdNormalize, CharPattern, CodePoint, Graphemes, Offset, Cod
 local Isyieldable, Running, Status, Create, Resume, Close, Yield, Wrap = coroutine.isyieldable, coroutine.running, coroutine.status, coroutine.create, coroutine.resume, coroutine.close, coroutine.yield, coroutine.wrap
 local Desynchronize, Synchronize, Cancel, Delay, Defer, Spawn, Wait = task.desynchronize, task.synchronize, task.cancel, task.delay, task.defer, task.spawn, task.wait
 --
-local CreateRenderObject = Drawing.new
 local SetRenderProperty = setrenderproperty
 local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
 local SayMessage = DefaultChatSystemChatEvents and DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
@@ -366,26 +365,26 @@ do -- Preload
     --
     do -- Renders
         Visuals.Cursor = {}
-        Visuals.CursorDot = {CreateRenderObject("Square"), CreateRenderObject("Square")}
+        Visuals.CursorDot = {Drawing.new("Square"), Drawing.new("Square")}
         --
         for Index = 1, 4 do
-            Visuals.Cursor[Index] = {CreateRenderObject("Line"), CreateRenderObject("Line")}
+            Visuals.Cursor[Index] = {Drawing.new("Line"), Drawing.new("Line")}
         end
         --
         for Index = 1, 2 do
             local Circle = Index == 1 and "AimAssist" or "Deadzone"
             --
-            Visuals[Circle .. "Circle"] = CreateRenderObject("Circle")
+            Visuals[Circle .. "Circle"] = Drawing.new("Circle")
             SetRenderProperty(Visuals[Circle .. "Circle"], "Filled", true)
             SetRenderProperty(Visuals[Circle .. "Circle"], "ZIndex", 59)
             --
-            Visuals[Circle .. "Outline"] = CreateRenderObject("Circle")
+            Visuals[Circle .. "Outline"] = Drawing.new("Circle")
             SetRenderProperty(Visuals[Circle .. "Outline"], "Thickness", 1.5)
             SetRenderProperty(Visuals[Circle .. "Outline"], "Filled", false)
             SetRenderProperty(Visuals[Circle .. "Outline"], "ZIndex", 60)
         end
         --
-        Visuals.Watermark = CreateRenderObject("Text")
+        Visuals.Watermark = Drawing.new("Text")
         SetRenderProperty(Visuals.Watermark, "Text", "Splix/Gamesneeze.cc/Atlanta.Space Beta 1.01")
         SetRenderProperty(Visuals.Watermark, "Size", 13)
         SetRenderProperty(Visuals.Watermark, "Font", 2)
@@ -2450,18 +2449,18 @@ do -- Visuals
                         Tick = tick()
                     },
                     Renders = {
-                        Flags = CreateRenderObject("Text"),
-                        Weapon = CreateRenderObject("Text"),
-                        Distance = CreateRenderObject("Text"),
-                        HealthBarOutline = CreateRenderObject("Square"),
-                        HealthBarInline = CreateRenderObject("Square"),
-                        HealthBarValue = CreateRenderObject("Text"),
-                        BoxFill = CreateRenderObject("Square"),
-                        BoxOutline = CreateRenderObject("Square"),
-                        BoxInline = CreateRenderObject("Square"),
-                        Name = CreateRenderObject("Text"),
-                        Arrow = CreateRenderObject("Triangle"),
-                        ArrowOutline = CreateRenderObject("Triangle")
+                        Flags = Drawing.new("Text"),
+                        Weapon = Drawing.new("Text"),
+                        Distance = Drawing.new("Text"),
+                        HealthBarOutline = Drawing.new("Square"),
+                        HealthBarInline = Drawing.new("Square"),
+                        HealthBarValue = Drawing.new("Text"),
+                        BoxFill = Drawing.new("Square"),
+                        BoxOutline = Drawing.new("Square"),
+                        BoxInline = Drawing.new("Square"),
+                        Name = Drawing.new("Text"),
+                        Arrow = Drawing.new("Triangle"),
+                        ArrowOutline = Drawing.new("Triangle")
                     }
                 }, {
                     __index = Visuals.Base
