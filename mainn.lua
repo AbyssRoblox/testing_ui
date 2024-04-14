@@ -468,7 +468,7 @@ local Themes, Visualisation, Visuals, Desync, Movement, Camera, Color, Math, Twe
     },
     Safe = true,
     Version = "Universal",
-    Language = "Russian",
+    Language = "Eng",
     Account = {
         Username = (lgVarsTbl and lgVarsTbl["DiscordUsername"] or "Matas"),
         UserID = 1
